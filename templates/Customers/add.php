@@ -14,7 +14,7 @@
         <div class="modal-dialog">
             <div class = "modal-content">
                 <div class = "modal-header">
-                    <legend><?= __('Add Product') ?></legend>
+                    <legend><?= __('Add Customer') ?></legend>
                 </div>
                 <div class = "modal-body">
                     <?= $this->Form->create($customer,['type'=>'file']) ?>
