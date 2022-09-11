@@ -4,13 +4,6 @@
  * @var \App\Model\Entity\Customer $customer
  */
 
-$formTemplate = [
-    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
-    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
-    'input' => '<input type="{{type}}" name="{{name}}" class="form-control" {{attrs}}/>'
-];
-
-$this->Form->setTemplates($formTemplate);
 
 ?>
 <div class="row">
