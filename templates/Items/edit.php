@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Item $item
+ * @var string[]|\Cake\Collection\CollectionInterface $categories
  * @var string[]|\Cake\Collection\CollectionInterface $orders
  */
 ?>
@@ -28,7 +29,7 @@
                     echo $this->Form->control('items_type');
                     echo $this->Form->control('items_price');
                     echo $this->Form->control('items_quantity');
-                    echo $this->Form->control('category_id');
+                    echo $this->Form->control('category_id', ['options' => $categories]);
                     echo $this->Form->control('orders._ids', ['options' => $orders]);
                 ?>
             </fieldset>

@@ -30,7 +30,7 @@
                     <td><?= h($item->items_type) ?></td>
                     <td><?= $this->Number->format($item->items_price) ?></td>
                     <td><?= $this->Number->format($item->items_quantity) ?></td>
-                    <td><?= $this->Number->format($item->category_id) ?></td>
+                    <td><?= $item->has('category') ? $this->Html->link($item->category->name, ['controller' => 'Categories', 'action' => 'view', $item->category->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $item->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $item->id]) ?>

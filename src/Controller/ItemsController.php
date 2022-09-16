@@ -18,6 +18,9 @@ class ItemsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Categories'],
+        ];
         $items = $this->paginate($this->Items);
 
         $this->set(compact('items'));
@@ -33,7 +36,7 @@ class ItemsController extends AppController
     public function view($id = null)
     {
         $item = $this->Items->get($id, [
-            'contain' => ['Orders'],
+            'contain' => ['Categories', 'Orders'],
         ]);
 
         $this->set(compact('item'));
@@ -56,8 +59,9 @@ class ItemsController extends AppController
             }
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
+        $categories = $this->Items->Categories->find('list', ['limit' => 200])->all();
         $orders = $this->Items->Orders->find('list', ['limit' => 200])->all();
-        $this->set(compact('item', 'orders'));
+        $this->set(compact('item', 'categories', 'orders'));
     }
 
     /**
@@ -81,8 +85,9 @@ class ItemsController extends AppController
             }
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
+        $categories = $this->Items->Categories->find('list', ['limit' => 200])->all();
         $orders = $this->Items->Orders->find('list', ['limit' => 200])->all();
-        $this->set(compact('item', 'orders'));
+        $this->set(compact('item', 'categories', 'orders'));
     }
 
     /**

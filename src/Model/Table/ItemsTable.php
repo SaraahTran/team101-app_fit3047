@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Items Model
  *
+ * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $Categories
  * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\BelongsToMany $Orders
  *
  * @method \App\Model\Entity\Item newEmptyEntity()

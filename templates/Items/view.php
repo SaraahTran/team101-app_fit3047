@@ -31,6 +31,10 @@
                     <td><?= h($item->items_type) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Category') ?></th>
+                    <td><?= $item->has('category') ? $this->Html->link($item->category->name, ['controller' => 'Categories', 'action' => 'view', $item->category->id]) : '' ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($item->id) ?></td>
                 </tr>
@@ -41,10 +45,6 @@
                 <tr>
                     <th><?= __('Items Quantity') ?></th>
                     <td><?= $this->Number->format($item->items_quantity) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Category Id') ?></th>
-                    <td><?= $this->Number->format($item->category_id) ?></td>
                 </tr>
             </table>
             <div class="related">

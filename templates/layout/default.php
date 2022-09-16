@@ -72,7 +72,16 @@
                     <span>Invoices</span></a>
             </li>
 
-     <li class="nav-item">
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->Url->build('/categories') ?>">
+                    <i class="fas fa-fw fa-solid fa-file-contract"></i>
+                    <span>Categories</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="<?= $this->Url->build('/items') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Items</span></a>
