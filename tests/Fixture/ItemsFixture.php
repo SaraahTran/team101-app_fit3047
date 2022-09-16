@@ -24,6 +24,8 @@ class ItemsFixture extends TestFixture
                 'items_desc' => 'Lorem ipsum dolor sit amet',
                 'items_type' => 'Lorem ipsum dolor sit amet',
                 'items_price' => 1,
+                'items_quantity' => 1,
+                'category_id' => 1,
             ],
         ];
         parent::init();

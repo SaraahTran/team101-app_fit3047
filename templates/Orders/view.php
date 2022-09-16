@@ -31,8 +31,8 @@
                     <td><?= $this->Number->format($order->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Items Quantity') ?></th>
-                    <td><?= $this->Number->format($order->items_quantity) ?></td>
+                    <th><?= __('Order Total') ?></th>
+                    <td><?= $this->Number->format($order->order_total) ?></td>
                 </tr>
             </table>
             <div class="related">
@@ -46,6 +46,8 @@
                             <th><?= __('Items Desc') ?></th>
                             <th><?= __('Items Type') ?></th>
                             <th><?= __('Items Price') ?></th>
+                            <th><?= __('Items Quantity') ?></th>
+                            <th><?= __('Category Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->items as $items) : ?>
@@ -55,6 +57,8 @@
                             <td><?= h($items->items_desc) ?></td>
                             <td><?= h($items->items_type) ?></td>
                             <td><?= h($items->items_price) ?></td>
+                            <td><?= h($items->items_quantity) ?></td>
+                            <td><?= h($items->category_id) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Items', 'action' => 'view', $items->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Items', 'action' => 'edit', $items->id]) ?>

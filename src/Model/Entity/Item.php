@@ -13,6 +13,8 @@ use Cake\ORM\Entity;
  * @property string $items_desc
  * @property string $items_type
  * @property float $items_price
+ * @property int $items_quantity
+ * @property int $category_id
  *
  * @property \App\Model\Entity\Order[] $orders
  */
@@ -32,6 +34,8 @@ class Item extends Entity
         'items_desc' => true,
         'items_type' => true,
         'items_price' => true,
+        'items_quantity' => true,
+        'category_id' => true,
         'orders' => true,
     ];
 }

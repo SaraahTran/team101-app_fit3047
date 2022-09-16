@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $orders_desc
  * @property int $custs_id
- * @property int $items_quantity
+ * @property float $order_total
  *
  * @property \App\Model\Entity\Customer $customer
  * @property \App\Model\Entity\Invoice[] $invoices
@@ -32,7 +32,7 @@ class Order extends Entity
     protected $_accessible = [
         'orders_desc' => true,
         'custs_id' => true,
-        'items_quantity' => true,
+        'order_total' => true,
         'customer' => true,
         'invoices' => true,
         'quotes' => true,

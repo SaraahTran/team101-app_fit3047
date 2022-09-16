@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $items_id
- * @property int $items_quantity
  *
  * @property \App\Model\Entity\Item $item
  */
@@ -27,7 +26,6 @@ class Inventory extends Entity
      */
     protected $_accessible = [
         'items_id' => true,
-        'items_quantity' => true,
         'item' => true,
     ];
 }

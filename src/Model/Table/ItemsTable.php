@@ -43,6 +43,10 @@ class ItemsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+            'joinType' => 'INNER',
+        ]);
         $this->belongsToMany('Orders', [
             'foreignKey' => 'item_id',
             'targetForeignKey' => 'order_id',
@@ -81,6 +85,30 @@ class ItemsTable extends Table
             ->requirePresence('items_price', 'create')
             ->notEmptyString('items_price');
 
+        $validator
+            ->integer('items_quantity')
+            ->requirePresence('items_quantity', 'create')
+            ->notEmptyString('items_quantity');
+
+        $validator
+            ->integer('category_id')
+            ->requirePresence('category_id', 'create')
+            ->notEmptyString('category_id');
+
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('category_id', 'Categories'), ['errorField' => 'category_id']);
+
+        return $rules;
     }
 }

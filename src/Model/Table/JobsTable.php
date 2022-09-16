@@ -62,9 +62,14 @@ class JobsTable extends Table
             ->notEmptyString('job_price');
 
         $validator
-            ->time('job_time')
+            ->dateTime('job_time')
             ->requirePresence('job_time', 'create')
-            ->notEmptyTime('job_time');
+            ->notEmptyDateTime('job_time');
+
+        $validator
+            ->integer('job_duration')
+            ->requirePresence('job_duration', 'create')
+            ->notEmptyString('job_duration');
 
         return $validator;
     }

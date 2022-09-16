@@ -21,7 +21,6 @@ class InventoriesFixture extends TestFixture
             [
                 'id' => 1,
                 'items_id' => 1,
-                'items_quantity' => 1,
             ],
         ];
         parent::init();

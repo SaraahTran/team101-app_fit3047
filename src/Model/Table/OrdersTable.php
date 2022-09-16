@@ -83,9 +83,9 @@ class OrdersTable extends Table
             ->notEmptyString('custs_id');
 
         $validator
-            ->integer('items_quantity')
-            ->requirePresence('items_quantity', 'create')
-            ->notEmptyString('items_quantity');
+            ->numeric('order_total')
+            ->requirePresence('order_total', 'create')
+            ->notEmptyString('order_total');
 
         return $validator;
     }

@@ -31,6 +31,10 @@
                     <td><?= $this->Number->format($job->job_price) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Job Duration') ?></th>
+                    <td><?= $this->Number->format($job->job_duration) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Job Time') ?></th>
                     <td><?= h($job->job_time) ?></td>
                 </tr>

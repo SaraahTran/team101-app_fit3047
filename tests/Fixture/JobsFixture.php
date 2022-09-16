@@ -22,7 +22,8 @@ class JobsFixture extends TestFixture
                 'id' => 1,
                 'job_desc' => 'Lorem ipsum dolor sit amet',
                 'job_price' => 1,
-                'job_time' => '10:14:06',
+                'job_time' => '',
+                'job_duration' => 1,
             ],
         ];
         parent::init();

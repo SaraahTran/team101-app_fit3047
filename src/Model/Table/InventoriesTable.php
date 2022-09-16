@@ -62,11 +62,6 @@ class InventoriesTable extends Table
             ->requirePresence('items_id', 'create')
             ->notEmptyString('items_id');
 
-        $validator
-            ->integer('items_quantity')
-            ->requirePresence('items_quantity', 'create')
-            ->notEmptyString('items_quantity');
-
         return $validator;
     }
 

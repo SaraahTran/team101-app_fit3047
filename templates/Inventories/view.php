@@ -26,10 +26,6 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($inventory->id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Items Quantity') ?></th>
-                    <td><?= $this->Number->format($inventory->items_quantity) ?></td>
-                </tr>
             </table>
         </div>
     </div>

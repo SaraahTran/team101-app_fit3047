@@ -38,6 +38,14 @@
                     <th><?= __('Items Price') ?></th>
                     <td><?= $this->Number->format($item->items_price) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Items Quantity') ?></th>
+                    <td><?= $this->Number->format($item->items_quantity) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Category Id') ?></th>
+                    <td><?= $this->Number->format($item->category_id) ?></td>
+                </tr>
             </table>
             <div class="related">
                 <h4><?= __('Related Orders') ?></h4>
@@ -48,7 +56,7 @@
                             <th><?= __('Id') ?></th>
                             <th><?= __('Orders Desc') ?></th>
                             <th><?= __('Custs Id') ?></th>
-                            <th><?= __('Items Quantity') ?></th>
+                            <th><?= __('Order Total') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($item->orders as $orders) : ?>
@@ -56,7 +64,7 @@
                             <td><?= h($orders->id) ?></td>
                             <td><?= h($orders->orders_desc) ?></td>
                             <td><?= h($orders->custs_id) ?></td>
-                            <td><?= h($orders->items_quantity) ?></td>
+                            <td><?= h($orders->order_total) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>

@@ -22,7 +22,7 @@ class OrdersFixture extends TestFixture
                 'id' => 1,
                 'orders_desc' => 'Lorem ipsum dolor sit amet',
                 'custs_id' => 1,
-                'items_quantity' => 1,
+                'order_total' => 1,
             ],
         ];
         parent::init();

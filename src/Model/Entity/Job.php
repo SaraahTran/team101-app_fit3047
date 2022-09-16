@@ -11,7 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $job_desc
  * @property float $job_price
- * @property \Cake\I18n\Time $job_time
+ * @property \Cake\I18n\FrozenTime $job_time
+ * @property int $job_duration
  */
 class Job extends Entity
 {
@@ -28,5 +29,6 @@ class Job extends Entity
         'job_desc' => true,
         'job_price' => true,
         'job_time' => true,
+        'job_duration' => true,
     ];
 }
