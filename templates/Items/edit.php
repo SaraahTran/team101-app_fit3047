@@ -24,13 +24,14 @@
             <fieldset>
                 <legend><?= __('Edit Item') ?></legend>
                 <?php
-                    echo $this->Form->control('items_name');
-                    echo $this->Form->control('items_desc');
-                    echo $this->Form->control('items_type');
-                    echo $this->Form->control('items_price');
-                    echo $this->Form->control('items_quantity');
-                    echo $this->Form->control('category_id', ['options' => $categories]);
-                    echo $this->Form->control('orders._ids', ['options' => $orders]);
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('item_quantity');
+                    echo $this->Form->control('item_price');
+                    echo $this->Form->control('quantity_threshold');
+                    echo $this->Form->control('description');
+                    echo $this->Form->control('category_id');
+                    echo $this->Form->control('orders_id', ['options' => $orders]);
+
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

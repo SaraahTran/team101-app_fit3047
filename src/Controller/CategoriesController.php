@@ -33,7 +33,7 @@ class CategoriesController extends AppController
     public function view($id = null)
     {
         $category = $this->Categories->get($id, [
-            'contain' => ['Items'],
+            'contain' => [],
         ]);
 
         $this->set(compact('category'));

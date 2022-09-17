@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Categories Model
  *
- * @property \App\Model\Table\ItemsTable&\Cake\ORM\Association\HasMany $Items
- *
  * @method \App\Model\Entity\Category newEmptyEntity()
  * @method \App\Model\Entity\Category newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Category[] newEntities(array $data, array $options = [])
@@ -57,16 +55,16 @@ class CategoriesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('cate_name')
-            ->maxLength('cate_name', 200)
-            ->requirePresence('cate_name', 'create')
-            ->notEmptyString('cate_name');
+            ->scalar('name')
+            ->maxLength('name', 200)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
 
         $validator
-            ->scalar('cate_desc')
-            ->maxLength('cate_desc', 200)
-            ->requirePresence('cate_desc', 'create')
-            ->notEmptyString('cate_desc');
+            ->scalar('description')
+            ->maxLength('description', 200)
+            ->requirePresence('description', 'create')
+            ->notEmptyString('description');
 
         return $validator;
     }

@@ -20,11 +20,11 @@ class ItemsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'items_name' => 'Lorem ipsum dolor sit amet',
-                'items_desc' => 'Lorem ipsum dolor sit amet',
-                'items_type' => 'Lorem ipsum dolor sit amet',
-                'items_price' => 1,
-                'items_quantity' => 1,
+                'name' => 'Lorem ipsum dolor sit amet',
+                'item_quantity' => 1,
+                'item_price' => 1,
+                'quantity_threshold' => 1,
+                'description' => 'Lorem ipsum dolor sit amet',
                 'category_id' => 1,
             ],
         ];

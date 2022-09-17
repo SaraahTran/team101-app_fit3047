@@ -23,7 +23,6 @@ class InventoriesControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.Inventories',
-        'app.Items',
     ];
 
     /**

@@ -19,12 +19,24 @@
             <h3><?= h($inventory->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Item') ?></th>
-                    <td><?= $inventory->has('item') ? $this->Html->link($inventory->item->id, ['controller' => 'Items', 'action' => 'view', $inventory->item->id]) : '' ?></td>
+                    <th><?= __('Name') ?></th>
+                    <td><?= h($inventory->name) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($inventory->id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Quantity') ?></th>
+                    <td><?= $this->Number->format($inventory->quantity) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Quantity Threshold') ?></th>
+                    <td><?= $this->Number->format($inventory->quantity_threshold) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Item Id') ?></th>
+                    <td><?= $this->Number->format($inventory->item_id) ?></td>
                 </tr>
             </table>
         </div>

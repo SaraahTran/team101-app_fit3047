@@ -9,11 +9,11 @@ use Cake\ORM\Entity;
  * Item Entity
  *
  * @property int $id
- * @property string $items_name
- * @property string $items_desc
- * @property string $items_type
- * @property float $items_price
- * @property int $items_quantity
+ * @property string $name
+ * @property int $item_quantity
+ * @property float $item_price
+ * @property int $quantity_threshold
+ * @property string $description
  * @property int $category_id
  *
  * @property \App\Model\Entity\Category $category
@@ -31,11 +31,11 @@ class Item extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'items_name' => true,
-        'items_desc' => true,
-        'items_type' => true,
-        'items_price' => true,
-        'items_quantity' => true,
+        'name' => true,
+        'item_quantity' => true,
+        'item_price' => true,
+        'quantity_threshold' => true,
+        'description' => true,
         'category_id' => true,
         'category' => true,
         'orders' => true,

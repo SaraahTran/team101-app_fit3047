@@ -2,7 +2,6 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Inventory $inventory
- * @var string[]|\Cake\Collection\CollectionInterface $items
  */
 ?>
 <div class="row">
@@ -23,7 +22,10 @@
             <fieldset>
                 <legend><?= __('Edit Inventory') ?></legend>
                 <?php
-                    echo $this->Form->control('items_id', ['options' => $items]);
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('quantity');
+                    echo $this->Form->control('quantity_threshold');
+                    echo $this->Form->control('item_id');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

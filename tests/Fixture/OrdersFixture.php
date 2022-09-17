@@ -20,9 +20,9 @@ class OrdersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'orders_desc' => 'Lorem ipsum dolor sit amet',
-                'custs_id' => 1,
-                'order_total' => 1,
+                'date' => '2022-09-17',
+                'total' => 1,
+                'customer_id' => 1,
             ],
         ];
         parent::init();

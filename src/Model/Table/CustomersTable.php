@@ -40,6 +40,10 @@ class CustomersTable extends Table
         $this->setTable('customers');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Orders', [
+            'foreignKey' => 'customer_id',
+        ]);
     }
 
     /**
@@ -52,7 +56,7 @@ class CustomersTable extends Table
     {
         $validator
             ->scalar('cust_name')
-            ->maxLength('cust_name', 256)
+            ->maxLength('cust_name', 50)
             ->requirePresence('cust_name', 'create')
             ->notEmptyString('cust_name');
 

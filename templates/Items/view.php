@@ -19,32 +19,32 @@
             <h3><?= h($item->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Items Name') ?></th>
-                    <td><?= h($item->items_name) ?></td>
+                    <th><?= __('Name') ?></th>
+                    <td><?= h($item->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Items Desc') ?></th>
-                    <td><?= h($item->items_desc) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Items Type') ?></th>
-                    <td><?= h($item->items_type) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Category') ?></th>
-                    <td><?= $item->has('category') ? $this->Html->link($item->category->name, ['controller' => 'Categories', 'action' => 'view', $item->category->id]) : '' ?></td>
+                    <th><?= __('Description') ?></th>
+                    <td><?= h($item->description) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($item->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Items Price') ?></th>
-                    <td><?= $this->Number->format($item->items_price) ?></td>
+                    <th><?= __('Item Quantity') ?></th>
+                    <td><?= $this->Number->format($item->item_quantity) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Items Quantity') ?></th>
-                    <td><?= $this->Number->format($item->items_quantity) ?></td>
+                    <th><?= __('Item Price') ?></th>
+                    <td><?= $this->Number->format($item->item_price) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Quantity Threshold') ?></th>
+                    <td><?= $this->Number->format($item->quantity_threshold) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Category Id') ?></th>
+                    <td><?= $this->Number->format($item->category_id) ?></td>
                 </tr>
             </table>
             <div class="related">
@@ -54,17 +54,17 @@
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('Orders Desc') ?></th>
-                            <th><?= __('Custs Id') ?></th>
-                            <th><?= __('Order Total') ?></th>
+                            <th><?= __('Date') ?></th>
+                            <th><?= __('Total') ?></th>
+                            <th><?= __('Customer Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($item->orders as $orders) : ?>
                         <tr>
                             <td><?= h($orders->id) ?></td>
-                            <td><?= h($orders->orders_desc) ?></td>
-                            <td><?= h($orders->custs_id) ?></td>
-                            <td><?= h($orders->order_total) ?></td>
+                            <td><?= h($orders->date) ?></td>
+                            <td><?= h($orders->total) ?></td>
+                            <td><?= h($orders->customer_id) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>

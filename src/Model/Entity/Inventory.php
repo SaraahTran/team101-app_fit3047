@@ -9,9 +9,10 @@ use Cake\ORM\Entity;
  * Inventory Entity
  *
  * @property int $id
- * @property int $items_id
- *
- * @property \App\Model\Entity\Item $item
+ * @property string $name
+ * @property int $quantity
+ * @property int $quantity_threshold
+ * @property int $item_id
  */
 class Inventory extends Entity
 {
@@ -25,7 +26,9 @@ class Inventory extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'items_id' => true,
-        'item' => true,
+        'name' => true,
+        'quantity' => true,
+        'quantity_threshold' => true,
+        'item_id' => true,
     ];
 }

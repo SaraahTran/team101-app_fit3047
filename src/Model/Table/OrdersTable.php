@@ -47,7 +47,7 @@ class OrdersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Customers', [
-            'foreignKey' => 'custs_id',
+            'foreignKey' => 'customer_id',
             'joinType' => 'INNER',
         ]);
         $this->hasMany('Invoices', [
@@ -59,7 +59,7 @@ class OrdersTable extends Table
         $this->belongsToMany('Items', [
             'foreignKey' => 'order_id',
             'targetForeignKey' => 'item_id',
-            'joinTable' => 'items_orders',
+            'joinTable' => 'orders_items',
         ]);
     }
 
@@ -72,20 +72,19 @@ class OrdersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('orders_desc')
-            ->maxLength('orders_desc', 256)
-            ->requirePresence('orders_desc', 'create')
-            ->notEmptyString('orders_desc');
+            ->date('date')
+            ->requirePresence('date', 'create')
+            ->notEmptyDate('date');
 
         $validator
-            ->integer('custs_id')
-            ->requirePresence('custs_id', 'create')
-            ->notEmptyString('custs_id');
+            ->numeric('total')
+            ->requirePresence('total', 'create')
+            ->notEmptyString('total');
 
         $validator
-            ->numeric('order_total')
-            ->requirePresence('order_total', 'create')
-            ->notEmptyString('order_total');
+            ->integer('customer_id')
+            ->requirePresence('customer_id', 'create')
+            ->notEmptyString('customer_id');
 
         return $validator;
     }
@@ -99,7 +98,7 @@ class OrdersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('custs_id', 'Customers'), ['errorField' => 'custs_id']);
+        $rules->add($rules->existsIn('customer_id', 'Customers'), ['errorField' => 'customer_id']);
 
         return $rules;
     }

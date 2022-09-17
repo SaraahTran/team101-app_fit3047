@@ -18,9 +18,6 @@ class InventoriesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Items'],
-        ];
         $inventories = $this->paginate($this->Inventories);
 
         $this->set(compact('inventories'));
@@ -36,7 +33,7 @@ class InventoriesController extends AppController
     public function view($id = null)
     {
         $inventory = $this->Inventories->get($id, [
-            'contain' => ['Items'],
+            'contain' => [],
         ]);
 
         $this->set(compact('inventory'));
@@ -59,8 +56,7 @@ class InventoriesController extends AppController
             }
             $this->Flash->error(__('The inventory could not be saved. Please, try again.'));
         }
-        $items = $this->Inventories->Items->find('list', ['limit' => 200])->all();
-        $this->set(compact('inventory', 'items'));
+        $this->set(compact('inventory'));
     }
 
     /**
@@ -84,8 +80,7 @@ class InventoriesController extends AppController
             }
             $this->Flash->error(__('The inventory could not be saved. Please, try again.'));
         }
-        $items = $this->Inventories->Items->find('list', ['limit' => 200])->all();
-        $this->set(compact('inventory', 'items'));
+        $this->set(compact('inventory'));
     }
 
     /**

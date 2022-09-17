@@ -21,7 +21,7 @@
                 <?php foreach ($quotes as $quote): ?>
                 <tr>
                     <td><?= $this->Number->format($quote->id) ?></td>
-                    <td><?= h($quote->quote_amount) ?></td>
+                    <td><?= $this->Number->format($quote->quote_amount) ?></td>
                     <td><?= $quote->has('order') ? $this->Html->link($quote->order->id, ['controller' => 'Orders', 'action' => 'view', $quote->order->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $quote->id]) ?>

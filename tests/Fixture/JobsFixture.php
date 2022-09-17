@@ -22,7 +22,7 @@ class JobsFixture extends TestFixture
                 'id' => 1,
                 'job_desc' => 'Lorem ipsum dolor sit amet',
                 'job_price' => 1,
-                'job_time' => '',
+                'job_time' => '2022-09-17 02:43:45',
                 'job_duration' => 1,
             ],
         ];

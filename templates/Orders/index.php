@@ -21,9 +21,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('orders_desc') ?></th>
-                <th><?= $this->Paginator->sort('custs_id') ?></th>
-                <th><?= $this->Paginator->sort('order_total') ?></th>
+                <th><?= $this->Paginator->sort('customer_name') ?></th>
+                <th><?= $this->Paginator->sort('date') ?></th>
+                <th><?= $this->Paginator->sort('total') ?></th>
+
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
@@ -31,9 +32,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <?php foreach ($orders as $order): ?>
                 <tr>
                     <td><?= $this->Number->format($order->id) ?></td>
-                    <td><?= h($order->orders_desc) ?></td>
-                    <td><?= $order->has('customer') ? $this->Html->link($order->customer->id, ['controller' => 'Customers', 'action' => 'view', $order->customer->id]) : '' ?></td>
-                    <td><?= $this->Number->format($order->order_total) ?></td>、
+                    <td><?= h($order->customer->cust_name) ?></td>
+                    <td><?= h($order->date) ?></td>
+
+                    <td><?= $this->Number->format($order->total) ?></td>
 
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>

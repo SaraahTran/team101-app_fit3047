@@ -58,8 +58,7 @@ class QuotesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('quote_amount')
-            ->maxLength('quote_amount', 256)
+            ->numeric('quote_amount')
             ->requirePresence('quote_amount', 'create')
             ->notEmptyString('quote_amount');
 

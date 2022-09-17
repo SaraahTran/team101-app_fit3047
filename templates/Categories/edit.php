@@ -22,8 +22,8 @@
             <fieldset>
                 <legend><?= __('Edit Category') ?></legend>
                 <?php
-                    echo $this->Form->control('cate_name');
-                    echo $this->Form->control('cate_desc');
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('description');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

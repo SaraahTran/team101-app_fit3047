@@ -25,7 +25,6 @@ class CategoriesTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Categories',
-        'app.Items',
     ];
 
     /**

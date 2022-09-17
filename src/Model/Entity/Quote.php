@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * Quote Entity
  *
  * @property int $id
- * @property string $quote_amount
+ * @property float $quote_amount
  * @property int $order_id
  *
  * @property \App\Model\Entity\Order $order

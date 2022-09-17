@@ -12,8 +12,8 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('cate_name') ?></th>
-                    <th><?= $this->Paginator->sort('cate_desc') ?></th>
+                    <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('description') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -21,8 +21,8 @@
                 <?php foreach ($categories as $category): ?>
                 <tr>
                     <td><?= $this->Number->format($category->id) ?></td>
-                    <td><?= h($category->cate_name) ?></td>
-                    <td><?= h($category->cate_desc) ?></td>
+                    <td><?= h($category->name) ?></td>
+                    <td><?= h($category->description) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>

@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Inventories Model
  *
- * @property \App\Model\Table\ItemsTable&\Cake\ORM\Association\BelongsTo $Items
- *
  * @method \App\Model\Entity\Inventory newEmptyEntity()
  * @method \App\Model\Entity\Inventory newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Inventory[] newEntities(array $data, array $options = [])
@@ -44,7 +42,7 @@ class InventoriesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Items', [
-            'foreignKey' => 'items_id',
+            'foreignKey' => 'item_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -58,9 +56,25 @@ class InventoriesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('items_id')
-            ->requirePresence('items_id', 'create')
-            ->notEmptyString('items_id');
+            ->scalar('name')
+            ->maxLength('name', 200)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
+            ->integer('quantity')
+            ->requirePresence('quantity', 'create')
+            ->notEmptyString('quantity');
+
+        $validator
+            ->integer('quantity_threshold')
+            ->requirePresence('quantity_threshold', 'create')
+            ->notEmptyString('quantity_threshold');
+
+        $validator
+            ->integer('item_id')
+            ->requirePresence('item_id', 'create')
+            ->notEmptyString('item_id');
 
         return $validator;
     }
@@ -74,7 +88,7 @@ class InventoriesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('items_id', 'Items'), ['errorField' => 'items_id']);
+        $rules->add($rules->existsIn('item_id', 'Items'), ['errorField' => 'item_id']);
 
         return $rules;
     }

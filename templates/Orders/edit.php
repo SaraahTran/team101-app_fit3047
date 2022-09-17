@@ -24,10 +24,10 @@
             <fieldset>
                 <legend><?= __('Edit Order') ?></legend>
                 <?php
-                    echo $this->Form->control('orders_desc');
-                    echo $this->Form->control('custs_id', ['options' => $customers]);
-                    echo $this->Form->control('order_total');
-                    echo $this->Form->control('items._ids', ['options' => $items]);
+                    echo $this->Form->control('date');
+                    echo $this->Form->control('total');
+                    echo $this->Form->control('customer_id');
+                    echo $this->Form->control('items_id', ['options' => $items]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

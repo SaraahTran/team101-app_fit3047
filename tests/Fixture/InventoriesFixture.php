@@ -20,7 +20,10 @@ class InventoriesFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'items_id' => 1,
+                'name' => 'Lorem ipsum dolor sit amet',
+                'quantity' => 1,
+                'quantity_threshold' => 1,
+                'item_id' => 1,
             ],
         ];
         parent::init();

@@ -9,9 +9,9 @@ use Cake\ORM\Entity;
  * Order Entity
  *
  * @property int $id
- * @property string $orders_desc
- * @property int $custs_id
- * @property float $order_total
+ * @property \Cake\I18n\FrozenDate $date
+ * @property float $total
+ * @property int $customer_id
  *
  * @property \App\Model\Entity\Customer $customer
  * @property \App\Model\Entity\Invoice[] $invoices
@@ -30,9 +30,9 @@ class Order extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'orders_desc' => true,
-        'custs_id' => true,
-        'order_total' => true,
+        'date' => true,
+        'total' => true,
+        'customer_id' => true,
         'customer' => true,
         'invoices' => true,
         'quotes' => true,

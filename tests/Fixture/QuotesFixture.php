@@ -20,7 +20,7 @@ class QuotesFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'quote_amount' => 'Lorem ipsum dolor sit amet',
+                'quote_amount' => 1,
                 'order_id' => 1,
             ],
         ];

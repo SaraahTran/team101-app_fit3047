@@ -51,7 +51,7 @@ class ItemsTable extends Table
         $this->belongsToMany('Orders', [
             'foreignKey' => 'item_id',
             'targetForeignKey' => 'order_id',
-            'joinTable' => 'items_orders',
+            'joinTable' => 'orders_items',
         ]);
     }
 
@@ -64,32 +64,31 @@ class ItemsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('items_name')
-            ->maxLength('items_name', 64)
-            ->requirePresence('items_name', 'create')
-            ->notEmptyString('items_name');
+            ->scalar('name')
+            ->maxLength('name', 200)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
 
         $validator
-            ->scalar('items_desc')
-            ->maxLength('items_desc', 256)
-            ->requirePresence('items_desc', 'create')
-            ->notEmptyString('items_desc');
+            ->integer('item_quantity')
+            ->requirePresence('item_quantity', 'create')
+            ->notEmptyString('item_quantity');
 
         $validator
-            ->scalar('items_type')
-            ->maxLength('items_type', 64)
-            ->requirePresence('items_type', 'create')
-            ->notEmptyString('items_type');
+            ->numeric('item_price')
+            ->requirePresence('item_price', 'create')
+            ->notEmptyString('item_price');
 
         $validator
-            ->numeric('items_price')
-            ->requirePresence('items_price', 'create')
-            ->notEmptyString('items_price');
+            ->integer('quantity_threshold')
+            ->requirePresence('quantity_threshold', 'create')
+            ->notEmptyString('quantity_threshold');
 
         $validator
-            ->integer('items_quantity')
-            ->requirePresence('items_quantity', 'create')
-            ->notEmptyString('items_quantity');
+            ->scalar('description')
+            ->maxLength('description', 200)
+            ->requirePresence('description', 'create')
+            ->notEmptyString('description');
 
         $validator
             ->integer('category_id')

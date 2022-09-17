@@ -12,7 +12,10 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('items_id') ?></th>
+                    <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('quantity') ?></th>
+                    <th><?= $this->Paginator->sort('quantity_threshold') ?></th>
+                    <th><?= $this->Paginator->sort('item_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -20,7 +23,10 @@
                 <?php foreach ($inventories as $inventory): ?>
                 <tr>
                     <td><?= $this->Number->format($inventory->id) ?></td>
-                    <td><?= $inventory->has('item') ? $this->Html->link($inventory->item->id, ['controller' => 'Items', 'action' => 'view', $inventory->item->id]) : '' ?></td>
+                    <td><?= h($inventory->name) ?></td>
+                    <td><?= $this->Number->format($inventory->quantity) ?></td>
+                    <td><?= $this->Number->format($inventory->quantity_threshold) ?></td>
+                    <td><?= $this->Number->format($inventory->item_id) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $inventory->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $inventory->id]) ?>
