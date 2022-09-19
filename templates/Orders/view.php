@@ -38,25 +38,23 @@
                         <td><?= $this->Number->format($order->id) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Orders Desc') ?></th>
-                        <td><?= h($order->orders_desc) ?></td>
+                        <th><?= __('Customer Id') ?></th>
+                        <td><?= $this->Number->format($order->customer_id) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Customer Name') ?></th>
+                        <td><?= h($order->customer->cust_name) ?></td>
                     </tr>
                     <tr>
                         <th><?= __('Total') ?></th>
                         <td><?= $this->Number->format($order->total) ?></td>
                     </tr>
-                    <tr>
-                        <th><?= __('Customer Id') ?></th>
-                        <td><?= $this->Number->format($order->customer_id) ?></td>
-                    </tr>
+
                     <tr>
                         <th><?= __('Date') ?></th>
                         <td><?= h($order->date) ?></td>
                     </tr>
-                    <tr>
-                        <th><?= __('Items Quantity') ?></th>
-                        <td><?= $this->Number->format($order->items_quantity) ?></td>
-                    </tr>
+
                 </table>
                 <div class="related">
                     <h4><?= __('Related Items') ?></h4>
@@ -67,21 +65,22 @@
                                     <th><?= __('Id') ?></th>
                                     <th><?= __('Name') ?></th>
                                     <th><?= __('Item Quantity') ?></th>
-                                    <th><?= __('Item Price') ?></th>
-                                    <th><?= __('Quantity Threshold') ?></th>
-                                    <th><?= __('Description') ?></th>
-                                    <th><?= __('Category Id') ?></th>
+                                    <th><?= __('Item Price($)') ?></th>
+
+                                    <th><?= __('Sub Total') ?></th>
+                                    <th><?= __('Category Name') ?></th>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 </tr>
                                 <?php foreach ($order->items as $items) : ?>
                                     <tr>
                                         <td><?= h($items->id) ?></td>
                                         <td><?= h($items->name) ?></td>
-                                        <td><?= h($items->item_quantity) ?></td>
+                                        <td><?= h($items->_joinData->line_quantity) ?></td>
                                         <td><?= h($items->item_price) ?></td>
-                                        <td><?= h($items->quantity_threshold) ?></td>
-                                        <td><?= h($items->description) ?></td>
+
+                                        <td><?= h($items->_joinData->line_price) ?></td>
                                         <td><?= h($items->category_id) ?></td>
+
                                         <td class="actions">
                                             <?= $this->Html->link(__('View'), ['controller' => 'Items', 'action' => 'view', $items->id]) ?>
                                             <?= $this->Html->link(__('Edit'), ['controller' => 'Items', 'action' => 'edit', $items->id]) ?>
@@ -90,6 +89,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
+                            <h3>Total: $<?= $order->total ?></h3>
                         </div>
                     <?php endif; ?>
                 </div>

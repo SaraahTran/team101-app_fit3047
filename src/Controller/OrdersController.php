@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use josegonzalez\Dotenv\Loader;
+
 /**
  * Orders Controller
  *
@@ -24,6 +26,7 @@ class OrdersController extends AppController
         $orders = $this->paginate($this->Orders);
 
         $this->set(compact('orders'));
+
     }
 
     /**
@@ -40,6 +43,15 @@ class OrdersController extends AppController
         ]);
 
         $this->set(compact('order'));
+
+
+
+
+
+
+
+
+
     }
 
     /**
@@ -50,10 +62,55 @@ class OrdersController extends AppController
     public function add()
     {
         $order = $this->Orders->newEmptyEntity();
+
         if ($this->request->is('post')) {
-            $order = $this->Orders->patchEntity($order, $this->request->getData());
+
+
+            $requestData = $this->request->getData();
+//            debug($requestData);
+//            exit;
+            foreach($requestData['items'] as $key => $data):
+
+                // check to see if any of the arrays have null ids (have not been selected):
+                if(empty($data['id'])){
+                    // if found, remove from data array
+                    unset($requestData['items'][$key]);
+                }
+            endforeach;
+            $productsWithSubtotal = $requestData['items'];
+            $order_items = 0;
+
+            //iterating through the $requestData array to calculate subtotal for each
+            //product
+            foreach($requestData['items'] as $key=>$p){
+                $fetchedProduct = $this->Orders->Items->get($p['id']);
+                //fetching the price
+                $itemsPrice = (float) $fetchedProduct->item_price;
+                //product quantity
+                $itemsQty = (int) $p['_joinData']['line_quantity'];
+                //calculating the subtotal
+                $itemSubtotal = strval($itemsPrice * $itemsQty);
+                //inserting the subtotal to joindata
+                $productsWithSubtotal[$key]['_joinData']['line_price'] = $itemSubtotal;
+
+                // updating the quantity of product in stock (requires validation)
+                // validation 1 - checking to see if current stock is zero
+                // validation 2 - checking to see if productQty > currentStock
+                $currentStock = $fetchedProduct->item_quantity;
+                $newQuantity = (int) $currentStock - $itemsQty;
+                $productsWithSubtotal[$key]['item_quantity'] = (int) $newQuantity;
+                $order_items += (float)$itemSubtotal;
+
+            }
+            $requestData['items'] = $productsWithSubtotal;
+
+            $order = $this->Orders->patchEntity($order, $requestData);
+
+            $order->total = $order_items;
+
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
+
 
                 return $this->redirect(['action' => 'index']);
             }
