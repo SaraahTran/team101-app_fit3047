@@ -91,7 +91,7 @@ endif;
                                                                    <!-- Card Header - Dropdown -->
                                                                    <div
                                                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                       <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                                                       <h6 class="m-0 font-weight-bold text-primary">Calendar</h6>
                                                                        <div class="dropdown no-arrow">
                                                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,7 +101,9 @@ endif;
                                                                        </div>
                                                                    </div>
                                                                    <!-- Card Body -->
-                                                                   <div class="card-body">
+                                                                   <div class="card-body text-center">
+                                                                      <span class="text-center today align-items-center">Today is <b><br><?php
+                                                                          echo date("d/m/Y") ?></span></b>
                                                                        <div class="chart-area">
                                                                            <canvas id="myAreaChart"></canvas>
                                                                        </div>
@@ -136,53 +138,55 @@ endif;
                                                                   <fieldset>
                                                                       <legend>Tasks to do:</legend>
 
-                                                                      <div>
-                                                                        <input type="checkbox" id="scales" name="scales"
-                                                                               checked>
-                                                                        <label for="scales">Fix amp for customer </label>
+                                                                      <?php
+                                                                      /**
+                                                                       * @var \App\View\AppView $this
+                                                                       * @var \App\Model\Entity\Job[]|\Cake\Collection\CollectionInterface $jobs
+                                                                       */
+
+                                                                      echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
+                                                                      echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+                                                                      echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+                                                                      ?>
+                                                                      <div class="jobs index content">
+
+                                                                          <div class="table-responsive">
+                                                                              <table class="table table-bordered" id="dataTable" width="100%">
+                                                                                  <thead>
+                                                                                  <tr>
+                                                                                      <th><?= $this->Paginator->sort('id') ?></th>
+                                                                                      <th><?= $this->Paginator->sort('job_desc') ?></th>
+                                                                                      <th><?= $this->Paginator->sort('job_price') ?></th>
+                                                                                      <th><?= $this->Paginator->sort('job_time') ?></th>
+                                                                                      <th><?= $this->Paginator->sort('job_duration') ?></th>
+                                                                                      <th class="actions"><?= __('Actions') ?></th>
+                                                                                  </tr>
+                                                                                  </thead>
+                                                                                  <tbody>
+                                                                                  <?php foreach ($jobs as $job): ?>
+                                                                                      <tr>
+                                                                                          <td><?= $this->Number->format($job->id) ?></td>
+                                                                                          <td><?= h($job->job_desc) ?></td>
+                                                                                          <td><?= $this->Number->format($job->job_price) ?></td>
+                                                                                          <td><?= h($job->job_time) ?></td>
+                                                                                          <td><?= $this->Number->format($job->job_duration) ?></td>
+                                                                                          <td class="actions">
+                                                                                              <?= $this->Html->link(__('View'), ['action' => 'view', $job->id]) ?>
+                                                                                              <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id]) ?>
+                                                                                              <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]) ?>
+                                                                                          </td>
+                                                                                      </tr>
+                                                                                  <?php endforeach; ?>
+                                                                                  </tbody>
+                                                                              </table>
+                                                                          </div>
+
                                                                       </div>
 
+
+
                                                                       <div>
-                                                                        <input type="checkbox" id="horns" name="horns">
-                                                                        <label for="horns">Stock up on guitar</label>
-                                                                      </div>
 
-                                                                       <div>
-                                                                                                                                              <input type="checkbox" id="horns" name="horns">
-                                                                                                                                              <label for="horns">Stock up on guitar</label>
-                                                                                                                                            </div>
-
-                                                                                                                                             <div>
-                                                                                                                                                                                                                    <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                                                                                    <label for="horns">Stock up on guitar</label>
-
-                                                                                 <div>
-                                                                                                                                                        <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                        <label for="horns">Stock up on guitar</label>
-                                                                                                                                                      </div>
-
-                                                                                                                                                                                                                                                                                         <div>
-                                                                                                                                                                                                                                                                                                                                                                <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                                                                                                                                                                                                                                <label for="horns">Stock up on guitar</label>
-
-                                                                                                                                                                                                                                                                                                                                                                 <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                        <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                                                                                                                                                                                                                                                                                                        <label for="horns">Stock up on guitar</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                       <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <label for="horns">Stock up on guitar</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-
-
-                                                                                                                                                                                                                                                                                                                                                              </div>
-
-                                                                                                                                                                                                                                                                                                                                                               <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                      <input type="checkbox" id="horns" name="horns">
-                                                                                                                                                                                                                                                                                                                                                                                                                                      <label for="horns">Stock up on guitar</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                    </div></div>
-                                                                  </fieldset>
                                                                        </div>
                                                                    </div>
                                                                </div>
@@ -201,7 +205,9 @@ endif;
                                                                        <div class="col mr-2">
                                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                                               Total Customers</div>
-                                                                           <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                                                           <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                               15
+                                                                           </div>
                                                                        </div>
                                                                        <div class="col-auto">
                                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
