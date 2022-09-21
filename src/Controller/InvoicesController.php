@@ -51,8 +51,13 @@ class InvoicesController extends AppController
     {
         $invoice = $this->Invoices->newEmptyEntity();
         if ($this->request->is('post')) {
+
+
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
+
+//            $invoice->invoice_amount = (float)$invoice->order->total;
             if ($this->Invoices->save($invoice)) {
+
                 $this->Flash->success(__('The invoice has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

@@ -5,8 +5,28 @@
  * @var \Cake\Collection\CollectionInterface|string[] $customers
  * @var \Cake\Collection\CollectionInterface|string[] $items
  */
-
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="row">
     <aside class="column">
@@ -34,7 +54,7 @@
                 <tr>
                     <td><?= $this->Form->control('items.'.$key.'.id', ['type' => 'checkbox',  'value' => $item]) ?></td>
                     <td><?= h($item) ?></td>
-                    <td><?= h($item->items_quantity) ?></td>
+                    <td><?= h($item) ?></td>
                     <td><?= $this->Form->control('items.'.$key.'._joinData.line_quantity') ?></td>
 
 
@@ -46,7 +66,7 @@
 
                 <?php
                 echo $this->Form->control('date');
-//                echo $this->Form->control('total');
+                //                echo $this->Form->control('total');
 
                 echo $this->Form->control('customer_id');
 
@@ -60,4 +80,7 @@
         </div>
     </div>
 </div>
+
+
+
 

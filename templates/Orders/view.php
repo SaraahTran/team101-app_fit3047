@@ -10,20 +10,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="row">
     <div class="column-responsive column-80">
         <div class="modal-dialog">
@@ -166,5 +152,6 @@
     </aside>
 
 </div>
+
 
 

@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $cust_name
  * @property string $cust_email
+ *
+ * @property \App\Model\Entity\Order[] $orders
  */
 class Customer extends Entity
 {
@@ -26,5 +28,6 @@ class Customer extends Entity
     protected $_accessible = [
         'cust_name' => true,
         'cust_email' => true,
+        'orders' => true,
     ];
 }

@@ -20,7 +20,7 @@ class OrdersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'date' => '2022-09-17',
+                'date' => '2022-09-19',
                 'total' => 1,
                 'customer_id' => 1,
             ],
