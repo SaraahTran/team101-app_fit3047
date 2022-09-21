@@ -1,8 +1,17 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Order[]|\Cake\Collection\CollectionInterface $orders
+ * @var iterable<\App\Model\Entity\Order> $orders
  */
+
+
+
+
+
+
+
+
+
 
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);

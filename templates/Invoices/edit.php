@@ -6,29 +6,43 @@
  */
 ?>
 <div class="row">
+    <div class="column-responsive column-80">
+        <div class="modal-dialog">
+            <div class = "modal-content">
+                <div class = "modal-header">
+                    <legend><?= __('Edit Invoice') ?></legend>
+                </div>
+                <div class = "modal-body">
+                    <?= $this->Form->create($invoice) ?>
+                    <fieldset>
+                        <?php
+                        echo $this->Form->control('invoice_amount');
+                        echo $this->Form->control('order_id', ['options' => $orders]);
+                        ?>
+                    </fieldset>
+                </div>
+                <div class = "modal-footer">
+                    <?= $this->Form->button(__('Submit'),['class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
+                    <?= $this->Form->end() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $invoice->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->id), 'class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']
             ) ?>
-            <?= $this->Html->link(__('List Invoices'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+
         </div>
+        <?= $this->Html->link(__('List Invoices'), ['action' => 'index'], ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
     </aside>
-    <div class="column-responsive column-80">
-        <div class="invoices form content">
-            <?= $this->Form->create($invoice) ?>
-            <fieldset>
-                <legend><?= __('Edit Invoice') ?></legend>
-                <?php
-                    echo $this->Form->control('invoice_amount');
-                    echo $this->Form->control('order_id', ['options' => $orders]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
+
+
 </div>
+

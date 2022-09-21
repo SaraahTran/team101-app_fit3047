@@ -78,7 +78,6 @@ class OrdersTable extends Table
 
         $validator
             ->numeric('total')
-            ->requirePresence('total', 'create')
             ->notEmptyString('total');
 
         $validator

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use josegonzalez\Dotenv\Loader;
-
 /**
  * Orders Controller
  *
@@ -26,7 +24,6 @@ class OrdersController extends AppController
         $orders = $this->paginate($this->Orders);
 
         $this->set(compact('orders'));
-
     }
 
     /**
@@ -43,15 +40,6 @@ class OrdersController extends AppController
         ]);
 
         $this->set(compact('order'));
-
-
-
-
-
-
-
-
-
     }
 
     /**
@@ -80,8 +68,8 @@ class OrdersController extends AppController
             $productsWithSubtotal = $requestData['items'];
             $order_items = 0;
 
-            //iterating through the $requestData array to calculate subtotal for each
-            //product
+//iterating through the $requestData array to calculate subtotal for each
+//product
             foreach($requestData['items'] as $key=>$p){
                 $fetchedProduct = $this->Orders->Items->get($p['id']);
                 //fetching the price
@@ -108,6 +96,9 @@ class OrdersController extends AppController
 
             $order->total = $order_items;
 
+
+
+
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
 
@@ -120,6 +111,13 @@ class OrdersController extends AppController
         $items = $this->Orders->Items->find('list', ['limit' => 200])->all();
         $this->set(compact('order', 'customers', 'items'));
     }
+
+
+
+
+
+
+
 
     /**
      * Edit method
