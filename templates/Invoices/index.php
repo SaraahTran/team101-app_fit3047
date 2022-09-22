@@ -8,7 +8,7 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="invoices index content">
-    <?= $this->Html->link(__('New Invoice'), ['action' => 'add'], ['class' => 'button float-right d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
+    <?= $this->Html->link(__('New Invoice'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
     <h3><?= __('Invoices') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%">

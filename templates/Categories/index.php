@@ -9,7 +9,7 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="categories index content">
-    <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
     <h3><?= __('Categories') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%">
