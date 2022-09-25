@@ -20,7 +20,7 @@ $this->Form->setTemplates($formTemplate);
 ?>
 
 
-<legend><?= __('Add Customer') ?></legend>
+<legend><?= __('Add Job') ?></legend>
 <div class="row">
 
 
@@ -29,7 +29,7 @@ $this->Form->setTemplates($formTemplate);
 
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Add New Customer</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Add New Job</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,11 +42,14 @@ $this->Form->setTemplates($formTemplate);
             <div class="card-body">
 
                 <div class = "modal-body">
-                    <?= $this->Form->create($customer) ?>
+                    <?= $this->Form->create($job) ?>
                     <fieldset>
+                        <legend><?= __('Add Job') ?></legend>
                         <?php
-                        echo $this->Form->control('cust_name');
-                        echo $this->Form->control('cust_email');
+                        echo $this->Form->control('job_desc');
+                        echo $this->Form->control('job_price');
+                        echo $this->Form->control('job_time');
+                        echo $this->Form->control('job_duration');
                         ?>
                     </fieldset>
                     <br>
@@ -58,7 +61,7 @@ $this->Form->setTemplates($formTemplate);
 
         </div>
         <h4 class="heading"><?= __('Actions') ?></h4>
-        <?= $this->Html->link(__('List Customers'), ['action' => 'index'], ['class'=>'btn btn-primary']) ?>
+        <?= $this->Html->link(__('List Jobs'), ['action' => 'index'], ['class'=>'btn btn-primary']) ?>
 
         </aside>
     </div>
@@ -70,49 +73,6 @@ $this->Form->setTemplates($formTemplate);
 </div>
 
 
-
-
-
-
-
-
-
-<div class="row">
-    <div class="column-responsive column-80">
-        <div class="modal-dialog">
-            <div class = "modal-content">
-                <div class = "modal-header">
-                    <legend><?= __('Add Job') ?></legend>
-                </div>
-                <div class = "modal-body">
-                    <?= $this->Form->create($job) ?>
-                    <fieldset>
-                        <legend><?= __('Add Job') ?></legend>
-                        <?php
-                        echo $this->Form->control('job_desc');
-                        echo $this->Form->control('job_price');
-                        echo $this->Form->control('job_time');
-                        echo $this->Form->control('job_duration');
-                        ?>
-                    </fieldset>
-                </div>
-                <div class = "modal-footer">
-                    <?= $this->Form->button(__('Submit'),['class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
-                    <?= $this->Form->end() ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Jobs'), ['action' => 'index'], ['class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
-        </div>
-    </aside>
-
-</div>
 
 
 

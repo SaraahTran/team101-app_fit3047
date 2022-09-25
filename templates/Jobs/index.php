@@ -32,9 +32,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($job->job_time) ?></td>
                     <td><?= $this->Number->format($job->job_duration) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $job->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $job->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['class' => 'btn btn-primary'], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

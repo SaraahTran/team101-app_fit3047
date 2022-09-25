@@ -31,9 +31,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->format($inventory->quantity_threshold) ?></td>
                     <td><?= $this->Number->format($inventory->item_id) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $inventory->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $inventory->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $inventory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $inventory->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $inventory->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $inventory->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $inventory->id], ['class' => 'btn btn-primary'], ['confirm' => __('Are you sure you want to delete # {0}?', $inventory->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -41,7 +41,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         </table>
     </div>
     <div class="paginator">
-      
+
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 

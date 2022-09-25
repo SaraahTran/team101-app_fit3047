@@ -47,9 +47,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->format($order->total) ?></td>
 
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $order->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['class' => 'btn btn-primary'], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
