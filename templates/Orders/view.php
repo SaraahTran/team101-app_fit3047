@@ -7,13 +7,31 @@
 
 
 
+<legend><?= __('View Invoice') ?></legend>
 
 
 
-<div class="row">
-    <div class="column-responsive column-80">
-        <div class="modal-dialog">
-            <div class = "modal-content">
+<div class="col-xl-6 col-lg-7">
+    <div class="card shadow mb-4">
+
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">View Invoice</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                </a>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="card-body">
+
+            <div class = "modal-body">
                 <h3><?= __('Item Information') ?></h3>
 
                 <table class="table table-bordered" id="dataTable" width="100%">

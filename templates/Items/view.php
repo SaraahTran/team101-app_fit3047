@@ -7,13 +7,33 @@
 
 
 
+<legend><?= __('View Item') ?></legend>
 
-<div class="row">
-    <div class="column-responsive column-80">
-        <div class="modal-dialog">
-            <div class = "modal-content">
-                <h3><?= h($item->id) ?></h3>
-                <table>
+
+
+<div class="col-xl-6 col-lg-7">
+    <div class="card shadow mb-4">
+
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">View Item</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                </a>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="card-body">
+
+            <div class = "modal-body">
+                <h3><?= h($item->name) ?></h3>
+                <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
                         <th><?= __('Name') ?></th>
                         <td><?= h($item->name) ?></td>
@@ -23,7 +43,7 @@
                         <td><?= h($item->description) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Id') ?></th>
+                        <th><?= __('ID') ?></th>
                         <td><?= $this->Number->format($item->id) ?></td>
                     </tr>
                     <tr>
@@ -39,7 +59,7 @@
                         <td><?= $this->Number->format($item->quantity_threshold) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Category Id') ?></th>
+                        <th><?= __('Category ID') ?></th>
                         <td><?= $this->Number->format($item->category_id) ?></td>
                     </tr>
                 </table>

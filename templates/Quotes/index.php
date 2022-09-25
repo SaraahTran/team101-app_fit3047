@@ -28,9 +28,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->format($quote->quote_amount) ?></td>
                     <td><?= $quote->has('order') ? $this->Html->link($quote->order->id, ['controller' => 'Orders', 'action' => 'view', $quote->order->id]) : '' ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $quote->id], ['class' => 'btn btn-primary']) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $quote->id], ['class' => 'btn btn-primary']) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $quote->id], ['class' => 'btn btn-primary'], ['confirm' => __('Are you sure you want to delete # {0}?', $quote->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $quote->id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $quote->id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $quote->id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $quote->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

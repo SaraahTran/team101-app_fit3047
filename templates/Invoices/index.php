@@ -27,9 +27,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->format($invoice->invoice_amount) ?></td>
                     <td><?= $invoice->has('order') ? $this->Html->link($invoice->order->id, ['controller' => 'Orders', 'action' => 'view', $invoice->order->id]) : '' ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $invoice->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invoice->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $invoice->id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invoice->id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -37,7 +37,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         </table>
     </div>
     <div class="paginator">
-      
+
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 

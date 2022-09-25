@@ -4,6 +4,19 @@
  * @var \App\Model\Entity\Inventory $inventory
  */
 ?>
+
+<legend><?= __('View Inventory') ?></legend>
+
+
+
+
+
+
+
+
+
+
+
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -79,7 +92,7 @@
                             <th><?= __('Item Id') ?></th>
                             <td><?= $this->Number->format($inventory->item_id) ?></td>
                         </tr>
-                   
+
                 </table>
 
             </div>

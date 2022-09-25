@@ -47,28 +47,28 @@ $this->Form->setTemplates($formTemplate);
 
                 <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
-                        <th><?= __('Cust Name') ?></th>
+                        <th><?= __('Name') ?></th>
                         <td><?= h($customer->cust_name) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Cust Email') ?></th>
+                        <th><?= __('Email') ?></th>
                         <td><?= h($customer->cust_email) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Id') ?></th>
+                        <th><?= __('ID') ?></th>
                         <td><?= $this->Number->format($customer->id) ?></td>
                     </tr>
                 </table>
                 <div class="related">
                     <h4><?= __('Related Orders') ?></h4>
                     <?php if (!empty($customer->orders)) : ?>
-                        <div class="table-responsive">
+                        <div class="table table-bordered" id="dataTable" width="100%">
                             <table>
                                 <tr>
-                                    <th><?= __('Id') ?></th>
+                                    <th><?= __('ID') ?></th>
                                     <th><?= __('Date') ?></th>
                                     <th><?= __('Total') ?></th>
-                                    <th><?= __('Customer Id') ?></th>
+                                    <th><?= __('Customer ID') ?></th>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 </tr>
                                 <?php foreach ($customer->orders as $orders) : ?>
@@ -82,10 +82,10 @@ $this->Form->setTemplates($formTemplate);
                                             <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>
                                             <?= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) ?>
                                         </td>
-                                    </tr>
+
                                 <?php endforeach; ?>
-                            </table>
-                        </div>
+                                    </tr>
+                        </div>   </table>
                     <?php endif; ?>
                 </div>
             </div>
