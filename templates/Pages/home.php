@@ -129,7 +129,7 @@ endif;
                                                                    <!-- Card Body -->
                                                                    <div class="card-body">
                                                                   <fieldset>
-                                                                      <legend>Tasks to do:</legend>
+                                                                      <legend>Job Tasks:</legend>
 
                                                                       <?php
                                                                       /**
