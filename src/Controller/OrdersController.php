@@ -73,20 +73,7 @@ class OrdersController extends AppController
             foreach($requestData['items'] as $key=>$p){
                 $fetchedProduct = $this->Orders->Items->get($p['id']);
                 //fetching the price
-                $currentS = (int)$fetchedProduct->item_quantity;
-                $itemQ = (int) $p['_joinData']['line_quantity'];
-                $itemTh = (int)$fetchedProduct->quantity_threshold;
-                if($currentS<=$itemTh){
-                    return $this->redirect(['action' => 'add']);
 
-                }
-                if($currentS-$itemQ<=$itemTh){
-                    return $this->redirect(['action' => 'add']);
-                }
-                if($itemQ == null){
-
-                    return $this->redirect(['action' => 'add']);
-                }
                 $itemsPrice = (float) $fetchedProduct->item_price;
                 //product quantity
                 $itemsQty = (int) $p['_joinData']['line_quantity'];
