@@ -81,218 +81,219 @@ endif;
             <div class="content">
       <h2>Dashboard</h2>
 
-                                       <!-- Content Row -->
+                <!-- Content Row -->
 
-                                                       <div class="row">
+                <div class="row">
 
-                                                           <!-- Area Chart -->
-                                                           <div class="col-xl-6 col-lg-7">
-                                                               <div class="card shadow mb-4">
-                                                                   <!-- Card Header - Dropdown -->
-                                                                   <div
-                                                                       class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                       <h6 class="m-0 font-weight-bold text-primary">Calendar</h6>
-                                                                       <div class="dropdown no-arrow">
-                                                                           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                                                           </a>
+                                    </a>
 
-                                                                       </div>
-                                                                   </div>
-                                                                   <!-- Card Body -->
-                                                                   <div class="card-body text-center">
-                                                                      <span class="text-center today align-items-center">Today is <b><br><?php
-                                                                          echo date("d/m/Y") ?></span></b>
-                                                                       <div class="chart-area">
-                                                                           <canvas id="myAreaChart"></canvas>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-   <!-- Area Chart -->
-                                                           <div class="col-xl-6 col-lg-7">
-                                                               <div class="card shadow mb-4">
-                                                                   <!-- Card Header - Dropdown -->
-                                                                   <div
-                                                                       class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                       <h6 class="m-0 font-weight-bold text-primary">Job Tasks</h6>
-                                                                       <div class="dropdown no-arrow">
-                                                                           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Job Tasks</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                                                           </a>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                         aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Dropdown Header:</div>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <fieldset>
+                                    <legend>Tasks to do:</legend>
 
-                                                                       </div>
-                                                                   </div>
-                                                                   <!-- Card Body -->
-                                                                   <div class="card-body">
-                                                                  <fieldset>
-                                                                      <legend>Job Tasks:</legend>
+                                    <div>
+                                        <input type="checkbox" id="scales" name="scales"
+                                               checked>
+                                        <label for="scales">Fix amp for customer </label>
+                                    </div>
 
-                                                                      <?php
-                                                                      /**
-                                                                       * @var \App\View\AppView $this
-                                                                       * @var \App\Model\Entity\Job[]|\Cake\Collection\CollectionInterface $jobs
-                                                                       */
+                                    <div>
+                                        <input type="checkbox" id="horns" name="horns">
+                                        <label for="horns">Stock up on guitar</label>
+                                    </div>
 
-                                                                      echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
-                                                                      echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-                                                                      echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
-                                                                      ?>
-                                                                      <div class="jobs index content">
+                                    <div>
+                                        <input type="checkbox" id="horns" name="horns">
+                                        <label for="horns">Stock up on guitar</label>
+                                    </div>
 
-                                                                          <div class="table-responsive">
-                                                                              <table class="table table-bordered" id="dataTable" width="100%">
-                                                                                  <thead>
-                                                                                  <tr>
-                                                                                      <th><?= $this->Paginator->sort('id') ?></th>
-                                                                                      <th><?= $this->Paginator->sort('job_desc') ?></th>
-                                                                                      <th><?= $this->Paginator->sort('job_price') ?></th>
-                                                                                      <th><?= $this->Paginator->sort('job_time') ?></th>
-                                                                                      <th><?= $this->Paginator->sort('job_duration') ?></th>
-                                                                                      <th class="actions"><?= __('Actions') ?></th>
-                                                                                  </tr>
-                                                                                  </thead>
-                                                                                  <tbody>
-                                                                                  <?php foreach ($jobs as $job): ?>
-                                                                                      <tr>
-                                                                                          <td><?= $this->Number->format($job->id) ?></td>
-                                                                                          <td><?= h($job->job_desc) ?></td>
-                                                                                          <td><?= $this->Number->format($job->job_price) ?></td>
-                                                                                          <td><?= h($job->job_time) ?></td>
-                                                                                          <td><?= $this->Number->format($job->job_duration) ?></td>
-                                                                                          <td class="actions">
-                                                                                              <?= $this->Html->link(__('View'), ['action' => 'view', $job->id]) ?>
-                                                                                              <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id]) ?>
-                                                                                              <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]) ?>
-                                                                                          </td>
-                                                                                      </tr>
-                                                                                  <?php endforeach; ?>
-                                                                                  </tbody>
-                                                                              </table>
-                                                                          </div>
+                                    <div>
+                                        <input type="checkbox" id="horns" name="horns">
+                                        <label for="horns">Stock up on guitar</label>
 
-                                                                      </div>
+                                        <div>
+                                            <input type="checkbox" id="horns" name="horns">
+                                            <label for="horns">Stock up on guitar</label>
+                                        </div>
 
+                                        <div>
+                                            <input type="checkbox" id="horns" name="horns">
+                                            <label for="horns">Stock up on guitar</label>
+
+                                            <div>
+                                                <input type="checkbox" id="horns" name="horns">
+                                                <label for="horns">Stock up on guitar</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="checkbox" id="horns" name="horns">
+                                                <label for="horns">Stock up on guitar</label>
+                                            </div>
 
 
-                                                                      <div>
+                                        </div>
 
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-
+                                        <div>
+                                            <input type="checkbox" id="horns" name="horns">
+                                            <label for="horns">Stock up on guitar</label>
+                                        </div></div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                    <!-- Content Row -->
-                                                   <div class="row">
+            </div>
 
-                                                       <!-- Earnings (Monthly) Card Example -->
-                                                       <div class="col-xl-3 col-md-6 mb-4">
-                                                           <div class="card border-left-primary shadow h-100 py-2">
-                                                               <div class="card-body">
-                                                                   <div class="row no-gutters align-items-center">
-                                                                       <div class="col mr-2">
-                                                                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                                              Total Customers</div>
-                                                                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                                               15
-                                                                           </div>
-                                                                       </div>
-                                                                       <div class="col-auto">
-                                                                           <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-                                                       </div>
+            <!-- Content Row -->
+            <div class="row">
 
-                                                       <!-- Earnings (Monthly) Card Example -->
-                                                       <div class="col-xl-3 col-md-6 mb-4">
-                                                           <div class="card border-left-success shadow h-100 py-2">
-                                                               <div class="card-body">
-                                                                   <div class="row no-gutters align-items-center">
-                                                                       <div class="col mr-2">
-                                                                           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                                               Total Items</div>
-                                                                           <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
-                                                                       </div>
-                                                                       <div class="col-auto">
-                                                                           <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-                                                       </div>
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Total Customers</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                       <!-- Earnings (Monthly) Card Example -->
-                                                       <div class="col-xl-3 col-md-6 mb-4">
-                                                           <div class="card border-left-info shadow h-100 py-2">
-                                                               <div class="card-body">
-                                                                   <div class="row no-gutters align-items-center">
-                                                                       <div class="col mr-2">
-                                                                           <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
-                                                                           </div>
-                                                                           <div class="row no-gutters align-items-center">
-                                                                               <div class="col-auto">
-                                                                                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                                               </div>
-                                                                               <div class="col">
-                                                                                   <div class="progress progress-sm mr-2">
-                                                                                       <div class="progress-bar bg-info" role="progressbar"
-                                                                                           style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                                                           aria-valuemax="100"></div>
-                                                                                   </div>
-                                                                               </div>
-                                                                           </div>
-                                                                       </div>
-                                                                       <div class="col-auto">
-                                                                           <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-                                                       </div>
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Total Items</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                       <!-- Pending Requests Card Example -->
-                                                       <div class="col-xl-3 col-md-6 mb-4">
-                                                           <div class="card border-left-warning shadow h-100 py-2">
-                                                               <div class="card-body">
-                                                                   <div class="row no-gutters align-items-center">
-                                                                       <div class="col mr-2">
-                                                                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                                               Total Orders</div>
-                                                                           <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                                                       </div>
-                                                                       <div class="col-auto">
-                                                                           <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-                                                       </div>
-                                                   </div>
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress progress-sm mr-2">
+                                                <div class="progress-bar bg-info" role="progressbar"
+                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                   <!-- Content Row -->
-
-
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Total Orders</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Content Row -->
+
+
         </div>
+    </div>
+    </div>
 
 
-    </main>
+</main>
 
 
 
 
 
 
-                </div>
-            </div>
+        </div>
+        </div>
         </main>
 
     </header>

@@ -87,6 +87,10 @@ class OrdersController extends AppController
 
                     return $this->redirect(['action' => 'add']);
                 }
+                if($itemQ <= 0){
+
+                    return $this->redirect(['action' => 'add']);
+                }
                 $itemsPrice = (float) $fetchedProduct->item_price;
                 //product quantity
                 $itemsQty = (int) $p['_joinData']['line_quantity'];
