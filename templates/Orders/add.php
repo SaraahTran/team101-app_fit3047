@@ -61,7 +61,7 @@ $this->Form->setTemplates($formTemplate);
                             </tr>
                             <?php foreach ($items as $key=>$item) : ?>
                             <tr>
-                                <td><?= $this->Form->control('items.'.$key.'.id', ['type' => 'checkbox',  'value' => $item]) ?></td>
+                                <td><?= $this->Form->control('items.'.$key.'.id', ['type' => 'checkbox', 'hiddenField' => false ,  'value' => $item,'label'=>false]) ?></td>
                                 <td><?= h($item) ?></td>
                                 <td><?= h($item) ?></td>
                                 <td><?= $this->Form->control('items.'.$key.'._joinData.line_quantity') ?></td>

@@ -49,9 +49,20 @@ class ItemsController extends AppController
      */
     public function add()
     {
+
         $item = $this->Items->newEmptyEntity();
         if ($this->request->is('post')) {
+
             $item = $this->Items->patchEntity($item, $this->request->getData());
+            if($item->quantity_threshold<=0){
+                return $this->redirect(['action' => 'add']);
+            }
+            if($item->item_quantity<=0){
+                return $this->redirect(['action' => 'add']);
+            }
+            if($item->item_price<=0){
+                return $this->redirect(['action' => 'add']);
+            }
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 

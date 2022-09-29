@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\Order;
+use App\Model\Table\OrdersTable;
+
 /**
  * Invoices Controller
  *
@@ -54,6 +57,7 @@ class InvoicesController extends AppController
 
 
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
+
 
 //            $invoice->invoice_amount = (float)$invoice->order->total;
             if ($this->Invoices->save($invoice)) {
