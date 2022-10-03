@@ -9,7 +9,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * User Model
+ * Users Model
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -25,7 +25,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
  */
-class UserTable extends Table
+class UsersTable extends Table
 {
     /**
      * Initialize method
@@ -37,7 +37,7 @@ class UserTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('user');
+        $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
     }
@@ -51,10 +51,10 @@ class UserTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('user_name')
-            ->maxLength('user_name', 200)
-            ->requirePresence('user_name', 'create')
-            ->notEmptyString('user_name');
+            ->scalar('username')
+            ->maxLength('username', 200)
+            ->requirePresence('username', 'create')
+            ->notEmptyString('username');
 
         $validator
             ->scalar('password')
@@ -62,6 +62,26 @@ class UserTable extends Table
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
+
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
+        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+
+        return $rules;
     }
 }

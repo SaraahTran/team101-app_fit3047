@@ -18,11 +18,11 @@ class ItemsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Categories'],
-        ];
-        $items = $this->paginate($this->Items);
-
+//        $this->paginate = [
+//            'contain' => ['Categories'],
+//        ];
+//        $items = $this->paginate($this->Items);
+        $items = $this->Items->find()->contain(['Categories']);
         $this->set(compact('items'));
     }
 

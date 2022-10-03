@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UserTable;
+use App\Model\Table\UsersTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UserTable Test Case
+ * App\Model\Table\UsersTable Test Case
  */
-class UserTableTest extends TestCase
+class UsersTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UserTable
+     * @var \App\Model\Table\UsersTable
      */
-    protected $User;
+    protected $Users;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class UserTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.User',
+        'app.Users',
     ];
 
     /**
@@ -35,8 +35,8 @@ class UserTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('User') ? [] : ['className' => UserTable::class];
-        $this->User = $this->getTableLocator()->get('User', $config);
+        $config = $this->getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
+        $this->Users = $this->getTableLocator()->get('Users', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class UserTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->User);
+        unset($this->Users);
 
         parent::tearDown();
     }
@@ -55,9 +55,20 @@ class UserTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\UserTable::validationDefault()
+     * @uses \App\Model\Table\UsersTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\UsersTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

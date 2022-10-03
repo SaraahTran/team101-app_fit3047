@@ -18,6 +18,7 @@ class JobsController extends AppController
      */
     public function index()
     {
+//        $this->Authorization->skipAuthorization();
         $jobs = $this->paginate($this->Jobs);
 
         $this->set(compact('jobs'));
@@ -32,6 +33,7 @@ class JobsController extends AppController
      */
     public function view($id = null)
     {
+//        $this->Authorization->skipAuthorization();
         $job = $this->Jobs->get($id, [
             'contain' => [],
         ]);
@@ -47,8 +49,26 @@ class JobsController extends AppController
     public function add()
     {
         $job = $this->Jobs->newEmptyEntity();
+//        $this->Authorization->authorize($job);
+//        if ($this->request->is('post')) {
+//            $job = $this->Jobs->patchEntity($job, $this->request->getData());
+//            if ($this->Jobs->save($job)) {
+//                $this->Flash->success(__('The job has been saved.'));
+//
+//                return $this->redirect(['action' => 'index']);
+//            }
+//            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+//        }
+//        $this->set(compact('job'));
+
+
+//        $this->Authorization->authorize($job);
         if ($this->request->is('post')) {
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
+
+            // Changed: Set the user_id from the current user.
+//            $job->user_id = $this->request->getAttribute('identity')->getIdentifier();
+
             if ($this->Jobs->save($job)) {
                 $this->Flash->success(__('The job has been saved.'));
 
@@ -56,8 +76,12 @@ class JobsController extends AppController
             }
             $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
+//        $tags = $this->Articles->Tags->find('list')->all();
         $this->set(compact('job'));
     }
+
+
+
 
     /**
      * Edit method
@@ -71,6 +95,7 @@ class JobsController extends AppController
         $job = $this->Jobs->get($id, [
             'contain' => [],
         ]);
+//        $this->Authorization->authorize($job);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
             if ($this->Jobs->save($job)) {
@@ -81,6 +106,9 @@ class JobsController extends AppController
             $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
+
+
+
     }
 
     /**
@@ -94,6 +122,7 @@ class JobsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $job = $this->Jobs->get($id);
+//        $this->Authorization->authorize($job);
         if ($this->Jobs->delete($job)) {
             $this->Flash->success(__('The job has been deleted.'));
         } else {
@@ -103,3 +132,5 @@ class JobsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 }
+
+

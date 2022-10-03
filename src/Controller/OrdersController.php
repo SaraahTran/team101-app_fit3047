@@ -7,6 +7,8 @@ namespace App\Controller;
  * Orders Controller
  *
  * @property \App\Model\Table\OrdersTable $Orders
+ * @property \App\Model\Table\QuotesTable $Quotes
+ * @property \App\Model\Table\InvoicesTable $Invoices
  * @method \App\Model\Entity\Order[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class OrdersController extends AppController
@@ -119,6 +121,8 @@ class OrdersController extends AppController
 
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
+//                $this->addQuote();
+//                $this->addInvoice();
 
 
                 return $this->redirect(['action' => 'index']);
@@ -131,7 +135,45 @@ class OrdersController extends AppController
     }
 
 
-
+//    public function addInvoice(){
+//        $invoiceTable = $this->getTableLocator()->get('Invoices');
+//        $invoice = $invoiceTable->newEmptyEntity();
+//        if ($this->request->is('post')) {
+//
+//
+//            $invoice->invoice_amount = $this->Orders->total;
+//            $invoice->order_id = $this->Orders->id;
+//
+//            if ($this->Invoices->save($invoice)) {
+//
+//                $this->Flash->success(__('The invoice has been saved.'));
+//
+//                return $this->redirect(['action' => 'index']);
+//            }
+//            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+//        }
+//        $orders = $this->Invoices->Orders->find('list', ['limit' => 200])->all();
+//        $this->set(compact('invoice', 'orders'));
+//    }
+//
+//    public function addQuote(){
+//        $quoteTable = $this->getTableLocator()->get('Quotes');
+//        $quote = $quoteTable->newEmptyEntity();
+//        if ($this->request->is('post')) {
+//            $quote->quote_amount = $this->Orders->total;
+//            $quote->order_id = $this->Orders->id;
+//            if ($this->Quotes->save($quote)) {
+//                $this->Flash->success(__('The quote has been saved.'));
+//
+//                return $this->redirect(['action' => 'index']);
+//            }
+//            $this->Flash->error(__('The quote could not be saved. Please, try again.'));
+//        }
+//        $orders = $this->Quotes->Orders->find('list', ['limit' => 200])->all();
+//        $this->set(compact('quote', 'orders'));
+//
+//
+//    }
 
 
 

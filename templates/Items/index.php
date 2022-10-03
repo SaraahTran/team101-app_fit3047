@@ -3,9 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Item[]|\Cake\Collection\CollectionInterface $items
  */
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+//echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 
 
@@ -23,13 +23,13 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('name') ?></th>
-                <th><?= $this->Paginator->sort('item_quantity') ?></th>
-                <th><?= $this->Paginator->sort('item_price') ?></th>
-                <th><?= $this->Paginator->sort('quantity_threshold') ?></th>
-                <th><?= $this->Paginator->sort('description') ?></th>
-                <th><?= $this->Paginator->sort('category_id') ?></th>
+                <th><?= h('id') ?></th>
+                <th><?= h('name') ?></th>
+                <th><?= h('item_quantity') ?></th>
+                <th><?= h('item_price') ?></th>
+                <th><?= h('quantity_threshold') ?></th>
+                <th><?= h('description') ?></th>
+                <th><?= h('category_id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

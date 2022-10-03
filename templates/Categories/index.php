@@ -9,15 +9,20 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="categories index content">
+
     <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
     <h3><?= __('Categories') ?></h3>
+
+
+
+
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%">
+        <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('description') ?></th>
+                    <th><?= h('id') ?></th>
+                    <th><?= h('name') ?></th>
+                    <th><?= h('description') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -37,6 +42,8 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             </tbody>
         </table>
     </div>
+
+>
     <div class="paginator">
 
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>

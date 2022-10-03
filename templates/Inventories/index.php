@@ -3,9 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Inventory[]|\Cake\Collection\CollectionInterface $inventories
  */
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+//echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="inventories index content">
     <?= $this->Html->link(__('New Inventory'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
@@ -14,11 +14,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('quantity') ?></th>
-                    <th><?= $this->Paginator->sort('quantity_threshold') ?></th>
-                    <th><?= $this->Paginator->sort('item_id') ?></th>
+                    <th><?= h('id') ?></th>
+                    <th><?= h('name') ?></th>
+                    <th><?= h('quantity') ?></th>
+                    <th><?= h('quantity_threshold') ?></th>
+                    <th><?= h('item_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\UserController;
+use App\Controller\UsersController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\UserController Test Case
+ * App\Controller\UsersController Test Case
  *
- * @uses \App\Controller\UserController
+ * @uses \App\Controller\UsersController
  */
-class UserControllerTest extends TestCase
+class UsersControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,14 +22,14 @@ class UserControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.User',
+        'app.Users',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\UserController::index()
+     * @uses \App\Controller\UsersController::index()
      */
     public function testIndex(): void
     {
@@ -40,7 +40,7 @@ class UserControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\UserController::view()
+     * @uses \App\Controller\UsersController::view()
      */
     public function testView(): void
     {
@@ -51,7 +51,7 @@ class UserControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\UserController::add()
+     * @uses \App\Controller\UsersController::add()
      */
     public function testAdd(): void
     {
@@ -62,7 +62,7 @@ class UserControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\UserController::edit()
+     * @uses \App\Controller\UsersController::edit()
      */
     public function testEdit(): void
     {
@@ -73,7 +73,7 @@ class UserControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\UserController::delete()
+     * @uses \App\Controller\UsersController::delete()
      */
     public function testDelete(): void
     {
