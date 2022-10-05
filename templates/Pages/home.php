@@ -206,7 +206,7 @@ endif;
 
 
 
-                        
+
                     <!-- Area Chart -->
                     <div class="col-xl-6 col-lg-7">
                         <div class="card shadow mb-4">
@@ -224,9 +224,9 @@ endif;
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="myAreaChart"></canvas>
-                                </div>
+
+                                    <canvas id="myChart" width="400" height="400"></canvas>
+
                             </div>
                         </div>
                     </div>
@@ -275,6 +275,7 @@ endif;
                                             <tbody>
                                             <?php foreach ($job as $job): ?>
                                                 <tr>
+
                                                     <td><?= $this->Number->format($job->id) ?></td>
                                                     <td><?= h($job->job_name) ?></td>
                                                     <td><?= $this->Number->format($job->job_price),'$' ?></td>
@@ -337,3 +338,116 @@ endif;
 
 </body>
 </html>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    var datas = new Array(0,0,0,0,0,0,0,0,0,0,0,0);
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+
+
+
+    <?php
+
+
+    foreach ($orderS as $order):
+    $datee = $order->date;?>
+    var a = "<?php echo $datee;?>"
+    var b = "<?php echo $order->total;?>"
+
+    var date1 = new Date(2022,0,1);
+    var date2 = new Date(2022,0,30);
+
+    var date3 = new Date(2022,1,28);
+    var date4 = new Date(2022,2,30);
+    var date5 = new Date(2022,3,30);
+    var date6 = new Date(2022,4,30);
+    var date7 = new Date(2022,5,30);
+    var date8 = new Date(2022,6,30);
+    var date9 = new Date(2022,7,30);
+    var date10 = new Date(2022,8,30);
+    var date11 = new Date(2022,9,30);
+    var date12 = new Date(2022,10,30);
+    var date13 = new Date(2022,11,30);
+    var dateee = new Date(a);
+    if(date1.getTime()<dateee&&dateee<date2.getTime()){
+        let c = parseInt(datas[0]) + parseInt(b);
+        datas[0] = c;
+    }else if(date2.getTime()<dateee&&dateee<date3.getTime()){
+        let c = parseInt(datas[1]) + parseInt(b);
+        datas[1] = c;
+
+    }else if(date3.getTime()<dateee&&dateee<date4.getTime()){
+        let c = parseInt(datas[2]) + parseInt(b);
+        datas[2] = c;
+    }else if(date4.getTime()<dateee&&dateee<date5.getTime()){
+        let c = parseInt(datas[3]) + parseInt(b);
+        datas[3] = c;
+    }else if(date5.getTime()<dateee&&dateee<date6.getTime()){
+        let c = parseInt(datas[4]) + parseInt(b);
+        datas[4] = c;
+    }else if(date6.getTime()<dateee&&dateee<date7.getTime()){
+        let c = parseInt(datas[5]) + parseInt(b);
+        datas[5] = c;
+    }else if(date7.getTime()<dateee&&dateee<date8.getTime()){
+        let c = parseInt(datas[6]) + parseInt(b);
+        datas[6] = c;
+    }else if(date8.getTime()<dateee&&dateee<date9.getTime()){
+        let c = parseInt(datas[7]) + parseInt(b);
+        datas[7] = c;
+    }else if(date9.getTime()<dateee&&dateee<date10.getTime()){
+        let c = parseInt(datas[8]) + parseInt(b);
+        datas[8] = c;
+    }else if(date10.getTime()<dateee&&dateee<date11.getTime()){
+        let c = parseInt(datas[9]) + parseInt(b);
+        datas[9] = c;
+
+    }else if(date11.getTime()<dateee&&dateee<date12.getTime()){
+        let c = parseInt(datas[10]) + parseInt(b);
+        datas[10] = c;
+    }else if(date12.getTime()<dateee&&dateee<date13.getTime()){
+        let c = parseInt(datas[11]) + parseInt(b);
+        datas[11] = c;
+    }
+
+
+
+    <?php endforeach; ?>
+
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            datasets: [{
+                label: '$ of each month',
+                data: datas,
+
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
