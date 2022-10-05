@@ -79,7 +79,7 @@
 
                         <a class="collapse-item" href="<?= $this->Url->build('/categories') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Item Categories</a>
                         <a class="collapse-item" href="<?= $this->Url->build('/items') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>  Items</a>
-                        <a class="collapse-item" href="<?= $this->Url->build('/inventories') ?>"> <i class="fas fa-fw fa-solid fa-warehouse"></i>  Inventories</a>
+                        
                     </div>
                 </div>
             </li>
