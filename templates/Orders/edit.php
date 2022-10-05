@@ -5,6 +5,19 @@
  * @var string[]|\Cake\Collection\CollectionInterface $customers
  * @var string[]|\Cake\Collection\CollectionInterface $items
  */
+$formTemplate =
+    [
+
+        'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
+        'input' => '<input type="{{type}}" name="{{name}}"  class="form-control" {{attrs}} />',
+        'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+        'label' => '<label{{attrs}} class="form-label"> {{text}}</label>',
+        'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
+        'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
+        'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}>{{value}}</textarea>',
+    ];
+
+$this->Form->setTemplates($formTemplate);
 ?>
 
 
@@ -23,7 +36,7 @@
                         echo $this->Form->control('date');
                         echo $this->Form->control('total');
                         echo $this->Form->control('customer_id', ['options' => $customers]);
-                        echo $this->Form->control('items_id', ['options' => $items]);
+//                        echo $this->Form->control('items_id', ['options' => $items]);
                         ?>
                     </fieldset>
                 </div>

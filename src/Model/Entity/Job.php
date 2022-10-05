@@ -26,6 +26,7 @@ class Job extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'job_name' => true,
         'job_desc' => true,
         'job_price' => true,
         'job_time' => true,

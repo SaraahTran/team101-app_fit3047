@@ -55,13 +55,16 @@ class ItemsController extends AppController
 
             $item = $this->Items->patchEntity($item, $this->request->getData());
             if($item->quantity_threshold<=0){
-                return $this->redirect(['action' => 'add']);
+                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add'], $item->id);
             }
             if($item->item_quantity<=0){
-                return $this->redirect(['action' => 'add']);
+                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add'], $item->id);
             }
             if($item->item_price<=0){
-                return $this->redirect(['action' => 'add']);
+                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add'], $item->id);
             }
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
@@ -89,6 +92,21 @@ class ItemsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $item = $this->Items->patchEntity($item, $this->request->getData());
+
+            if($item->quantity_threshold<=0){
+                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $item->id]);
+            }
+            if($item->item_quantity<=0){
+                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $item->id]);
+            }
+            if($item->item_price<=0){
+                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $item->id]);
+            }
+
+
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 

@@ -20,6 +20,7 @@ class JobsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
+                'job_name' => 'ro',
                 'job_desc' => 'Lorem ipsum dolor sit amet',
                 'job_price' => 1,
                 'job_time' => '2022-09-17 02:43:45',

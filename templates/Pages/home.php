@@ -12,6 +12,10 @@
  * @since     0.10.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
+ * @var \Cake\Collection\CollectionInterface|string[] $job
+ * @var \Cake\Collection\CollectionInterface|string[] $cust
+ * @var \Cake\Collection\CollectionInterface|string[] $items
+ * @var \Cake\Collection\CollectionInterface|string[] $orderS
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -90,7 +94,119 @@ endif;
                 <!-- Content Row -->
 
                 <div class="row">
+                    <!-- Content Row -->
+                    <div class="row">
 
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Customers</div>
+                                            <?php $num = 0 ?>
+                                            <?php foreach ($cust as $cust): ?>
+                                                <?php $num ++ ?>
+                                            <?php endforeach; ?>
+
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($num) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Items</div>
+                                            <?php $numI = 0 ?>
+                                            <?php foreach ($items as $itemss): ?>
+                                                <?php $numI ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numI) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                             aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Orders</div>
+                                            <?php $numO = 0 ?>
+                                            <?php foreach ($orderS as $orders): ?>
+                                                <?php $numO ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numO) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                     <!-- Area Chart -->
                     <div class="col-xl-6 col-lg-7">
                         <div class="card shadow mb-4">
@@ -139,55 +255,44 @@ endif;
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
+
                                 <fieldset>
                                     <legend>Tasks to do:</legend>
 
                                     <div>
-                                        <input type="checkbox" id="scales" name="scales"
-                                               checked>
-                                        <label for="scales">Fix amp for customer </label>
+
+                                        <table class="table table-bordered" id="dataTable"  >
+                                            <thead>
+                                            <tr>
+                                                <th><?= h('id') ?></th>
+                                                <th><?= h('job_name') ?></th>
+                                                <th><?= h('job_price') ?></th>
+                                                <th><?= h('job_time') ?></th>
+                                                <th><?= h('job_duration') ?></th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($job as $job): ?>
+                                                <tr>
+                                                    <td><?= $this->Number->format($job->id) ?></td>
+                                                    <td><?= h($job->job_name) ?></td>
+                                                    <td><?= $this->Number->format($job->job_price),'$' ?></td>
+                                                    <td><?= h($job->job_time) ?></td>
+                                                    <td><?= $this->Number->format($job->job_duration),' day' ?></td>
+
+                                                </tr>
+                                            <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#dataTable').DataTable();
+                                            });
+
+                                        </script>
                                     </div>
 
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-                                        </div>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-
-                                            <div>
-                                                <input type="checkbox" id="horns" name="horns">
-                                                <label for="horns">Stock up on guitar</label>
-                                            </div>
-
-                                            <div>
-                                                <input type="checkbox" id="horns" name="horns">
-                                                <label for="horns">Stock up on guitar</label>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-                                        </div></div>
                                 </fieldset>
                             </div>
                         </div>
@@ -196,91 +301,7 @@ endif;
 
             </div>
 
-            <!-- Content Row -->
-            <div class="row">
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Total Customers</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Items</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-info shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                     aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pending Requests Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Total Orders</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Content Row -->

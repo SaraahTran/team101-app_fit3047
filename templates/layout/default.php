@@ -22,8 +22,8 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-
     <?= $this->Html->script('/vendor/jquery/jquery.min.js')?>
+
 
 </head>
 
@@ -232,6 +232,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js')?>
     <!-- Bootstrap core JavaScript-->
 
@@ -250,7 +254,7 @@
 
     <?= $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js')?>
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>.
+
 
 
 

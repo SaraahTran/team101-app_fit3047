@@ -10,7 +10,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,14 +20,11 @@
 
     <!-- Custom fonts for this template-->
 
-
-
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
 
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('/css/sb-admin-2.min.css') ?>
-
 </head>
 
 <body class="bg-gradient-primary">
@@ -63,14 +59,10 @@
                                         <?= $this->Form->submit(__('Login'),['class'=>'btn btn-primary btn-user btn-block']); ?>
                                         <?= $this->Form->end() ?>
 
-
                                     </div>
 
 
                                 <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
                                 <div class="text-center">
 
                                     <a class="small" "><?= $this->Html->link("Create an Account!", ['action' => 'add']) ?></a>

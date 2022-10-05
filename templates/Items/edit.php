@@ -29,7 +29,7 @@
                         echo $this->Form->control('quantity_threshold');
                         echo $this->Form->control('description');
                         echo $this->Form->control('category_id');
-                        echo $this->Form->control('orders_id', ['options' => $orders]);
+//                        echo $this->Form->control('orders_id', ['options' => $orders]);
 
                         ?>
                     </fieldset>
