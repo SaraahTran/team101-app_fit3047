@@ -54,12 +54,12 @@ $this->Form->setTemplates($formTemplate);
                     <fieldset>
 
                         <?php
-                        echo $this->Form->control('name');
+                        echo $this->Form->control('name',['label'=>'Item name']);
                         echo $this->Form->control('item_quantity');
-                        echo $this->Form->control('item_price');
-                        echo $this->Form->control('quantity_threshold');
-                        echo $this->Form->control('description');
-                        echo $this->Form->control('category_id');
+                        echo $this->Form->control('item_price',['label'=>'item price($)']);
+                        echo $this->Form->control('quantity_threshold',['label'=>'Inventory Alert Threshold']);
+                        echo $this->Form->control('description',['label'=>'Item description']);
+                        echo $this->Form->control('category_id',['label'=>'Item category']);
                         //                        echo $this->Form->control('orders_id', ['options' => $orders]);
 
                         ?>
@@ -82,7 +82,7 @@ $this->Form->setTemplates($formTemplate);
                 ) ?>
 
 
-                <?= $this->Html->link(__('List Invoices'), ['action' => 'index'], ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
+                <?= $this->Html->link(__('List Items'), ['action' => 'index'], ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
             </aside>
 
 

@@ -9,7 +9,8 @@
 //echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="jobs index content">
-    <?= $this->Html->link(__('New Job'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
+    <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="button float-right btn btn-primary"><i
+            class="fas fa-solid fa-plus fa-sm text-white-50"></i> New Job</a>
     <h3><?= __('Jobs') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%">
@@ -18,7 +19,7 @@
                     <th><?= h('id') ?></th>
                     <th><?= h('job name') ?></th>
                     <th><?= h('job description') ?></th>
-                    <th><?= h('job price') ?></th>
+                    <th><?= h('job price($)') ?></th>
                     <th><?= h('job start time') ?></th>
                     <th><?= h('job duration') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -30,9 +31,9 @@
                     <td><?= $this->Number->format($job->id) ?></td>
                     <td><?= h($job->job_name) ?></td>
                     <td><?= h($job->job_desc) ?></td>
-                    <td><?= $this->Number->format($job->job_price) ?></td>
+                    <td><?= $this->Number->format($job->job_price),'$' ?></td>
                     <td><?= h($job->job_time) ?></td>
-                    <td><?= $this->Number->format($job->job_duration) ?></td>
+                    <td><?= $this->Number->format($job->job_duration),'  day' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $job->id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id], ['class' => 'btn btn-primary btn-sm']) ?>

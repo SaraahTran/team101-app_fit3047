@@ -44,7 +44,7 @@ $this->Form->setTemplates($formTemplate);
                     <fieldset>
 
                         <?php
-                        echo $this->Form->control('name');
+                        echo $this->Form->control('name',['label'=>'Category name']);
                         echo $this->Form->control('description');
                         ?>
                     </fieldset>

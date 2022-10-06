@@ -58,7 +58,7 @@ $this->Form->setTemplates($formTemplate);
             <?= $this->Form->create($quote) ?>
             <fieldset>
                 <?php
-                echo $this->Form->control('quote_amount');
+                echo $this->Form->control('quote_amount',['label'=>'quote amount($)']);
                 echo $this->Form->control('order_id', ['options' => $orders]);
                 ?>
             </fieldset>

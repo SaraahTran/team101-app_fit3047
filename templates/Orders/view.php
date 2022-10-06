@@ -50,7 +50,7 @@
                         <td><?= h($order->customer->cust_name) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Total') ?></th>
+                        <th><?= __('Total($)') ?></th>
                         <td><?= $this->Number->format($order->total) ?></td>
                     </tr>
 

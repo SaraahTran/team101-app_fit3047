@@ -9,7 +9,9 @@
 //echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="quotes index content">
-    <?= $this->Html->link(__('New Quote'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
+   
+    <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="button float-right btn btn-primary"><i
+            class="fas fa-solid fa-plus fa-sm text-white-50"></i> New Quote</a>
     <h3><?= __('Quotes') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%">

@@ -51,7 +51,7 @@
                         <td><?= $this->Number->format($item->item_quantity) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Item Price') ?></th>
+                        <th><?= __('Item Price($)') ?></th>
                         <td><?= $this->Number->format($item->item_price) ?></td>
                     </tr>
                     <tr>

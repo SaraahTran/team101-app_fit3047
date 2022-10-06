@@ -9,8 +9,9 @@
 //echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="categories index content">
-
-    <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'button float-right btn btn-primary']) ?>
+    
+    <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="button float-right btn btn-primary"><i
+            class="fas fa-solid fa-plus fa-sm text-white-50"></i> New Category</a>
     <h3><?= __('Categories') ?></h3>
 
 

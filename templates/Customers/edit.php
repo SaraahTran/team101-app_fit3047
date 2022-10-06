@@ -45,8 +45,8 @@ $this->Form->setTemplates($formTemplate);
                     <fieldset>
 
                         <?php
-                        echo $this->Form->control('cust_name');
-                        echo $this->Form->control('cust_email');
+                        echo $this->Form->control('cust_name',['label'=>'Customer name']);
+                        echo $this->Form->control('cust_email',['label'=>'Customer email']);
                         ?>
                     </fieldset>
                 </div><br>

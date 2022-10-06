@@ -76,7 +76,7 @@ $this->Form->setTemplates($formTemplate);
                         <fieldset>
 
                             <?php
-                            echo $this->Form->control('date');
+                            echo $this->Form->control('date',['label'=>'order date']);
                             echo $this->Form->control('customer_id', ['options' => $customers]);
                             ?>
                         </fieldset>

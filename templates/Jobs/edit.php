@@ -51,8 +51,8 @@ $this->Form->setTemplates($formTemplate);
 
                     echo $this->Form->control('job_price');
                     echo $this->Form->control('job_start_time');
-                    echo $this->Form->control('job_duration');
-                    echo $this->Form->control('job_desc');
+                    echo $this->Form->control('job_duration',['label'=>'job duration($)']);
+                    echo $this->Form->control('job_desc',['label'=>'job description']);
                     ?>
                 </fieldset>
             </div>

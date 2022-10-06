@@ -75,123 +75,125 @@ endif;
 
 </head>
 <body>
-<header>
-    <div class="container text-center">
+    <header>
+        <div class="container text-center">
 
-        <h1>    <i class="fas fa-guitar"></i>
-            GATech
-        </h1>
+            <h1>    <i class="fas fa-guitar"></i>
+                GATech
+            </h1>
 
 
-    </div>
-</header>
+        </div>
+    </header>
 
 <main class="main">
-    <div class="container">
-        <div class="content">
-            <h2>Dashboard</h2>
+        <div class="container">
+            <div class="content">
+      <h2>Dashboard</h2>
 
-            <!-- Content Row -->
-
-            <div class="row">
                 <!-- Content Row -->
+
                 <div class="row">
+                    <!-- Content Row -->
+                    <div class="row">
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total Customers</div>
-                                        <?php $num = 0 ?>
-                                        <?php foreach ($cust as $cust): ?>
-                                            <?php $num ++ ?>
-                                        <?php endforeach; ?>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Customers</div>
+                                            <?php $num = 0 ?>
+                                            <?php foreach ($cust as $cust): ?>
+                                                <?php $num ++ ?>
+                                            <?php endforeach; ?>
 
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($num) ?></div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Total Items</div>
-                                        <?php $numI = 0 ?>
-                                        <?php foreach ($items as $itemss): ?>
-                                            <?php $numI ++ ?>
-                                        <?php endforeach; ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numI) ?></div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($num) ?></div>
                                         </div>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Items</div>
+                                            <?php $numI = 0 ?>
+                                            <?php foreach ($items as $itemss): ?>
+                                                <?php $numI ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numI) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
                                             </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                         style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <?php $numJ = 0 ?>
+                                                    <?php foreach ($job as $jobb): ?>
+                                                        <?php $numJ ++ ?>
+                                                    <?php endforeach; ?>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= h($numJ) ?></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Pending Requests Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Total Orders</div>
-                                        <?php $numO = 0 ?>
-                                        <?php foreach ($orderS as $orders): ?>
-                                            <?php $numO ++ ?>
-                                        <?php endforeach; ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numO) ?></div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Orders</div>
+                                            <?php $numO = 0 ?>
+                                            <?php foreach ($orderS as $orders): ?>
+                                                <?php $numO ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numO) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
 
@@ -225,7 +227,7 @@ endif;
                             <!-- Card Body -->
                             <div class="card-body">
 
-                                <canvas id="myChart" width="400" height="400"></canvas>
+                                    <canvas id="myChart" width="400" height="400"></canvas>
 
                             </div>
                         </div>
@@ -264,19 +266,21 @@ endif;
                                         <table class="table table-bordered" id="dataTable"  >
                                             <thead>
                                             <tr>
-                                                <th><?= h('id') ?></th>
-                                                <th><?= h('job_name') ?></th>
-                                                <th><?= h('job_price') ?></th>
-                                                <th><?= h('job_time') ?></th>
-                                                <th><?= h('job_duration') ?></th>
+                                                <th><?= h('time remain') ?></th>
+                                                <th><?= h('job name') ?></th>
+                                                <th><?= h('job price') ?></th>
+                                                <th><?= h('job time') ?></th>
+                                                <th><?= h('job duration') ?></th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($job as $job): ?>
-                                                <tr>
+                                            <?php foreach ($job as $job):
 
+                                                ?>
+                                                <tr>
                                                     <td><?= $this->Number->format($job->id) ?></td>
+                                                    <td><?= $this->Number->format($job->job_price),'$' ?></td>
                                                     <td><?= h($job->job_name) ?></td>
                                                     <td><?= $this->Number->format($job->job_price),'$' ?></td>
                                                     <td><?= h($job->job_time) ?></td>
@@ -303,12 +307,12 @@ endif;
             </div>
 
 
+            </div>
+
+            <!-- Content Row -->
+
+
         </div>
-
-        <!-- Content Row -->
-
-
-    </div>
     </div>
     </div>
 
@@ -319,18 +323,18 @@ endif;
 
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
 
 
@@ -356,7 +360,7 @@ endif;
     var a = "<?php echo $datee;?>"
     var b = "<?php echo $order->total;?>"
 
-    var date1 = new Date(2022,0,1);
+    var date1 = new Date(year,0,1);
     var date2 = new Date(2022,0,30);
 
     var date3 = new Date(2022,1,28);
@@ -451,4 +455,3 @@ endif;
         }
     });
 </script>
-

@@ -29,7 +29,7 @@
                 <td><?= h($user->username) ?></td>
                 <td><?= h($user->email) ?></td>
                 <td class="actions">
-                    
+
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-primary btn-sm']) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                 </td>

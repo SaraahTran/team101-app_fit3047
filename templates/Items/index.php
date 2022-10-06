@@ -26,8 +26,8 @@
                 <th><?= h('id') ?></th>
                 <th><?= h('name') ?></th>
                 <th><?= h('item quantity') ?></th>
-                <th><?= h('item price') ?></th>
-                <th><?= h('quantity threshold') ?></th>
+                <th><?= h('item price($)') ?></th>
+                <th><?= h('Inventory Alert Threshold') ?></th>
                 <th><?= h('description') ?></th>
                 <th><?= h('category') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>

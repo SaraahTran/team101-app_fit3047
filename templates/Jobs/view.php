@@ -46,12 +46,12 @@
                         <td><?= h($job->job_name) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Job Price') ?></th>
+                        <th><?= __('Job Price($)') ?></th>
                         <td><?= $this->Number->format($job->job_price) ?></td>
                     </tr>
                     <tr>
                         <th><?= __('Job Duration') ?></th>
-                        <td><?= $this->Number->format($job->job_duration) ?></td>
+                        <td><?= $this->Number->format($job->job_duration),'  day' ?></td>
                     </tr>
                     <tr>
                         <th><?= __('Job Time') ?></th>

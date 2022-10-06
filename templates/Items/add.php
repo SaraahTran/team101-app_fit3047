@@ -46,12 +46,12 @@ $this->Form->setTemplates($formTemplate);
                     <?= $this->Form->create($item) ?>
                     <fieldset>
                         <?php
-                        echo $this->Form->control('name');
+                        echo $this->Form->control('name',['label'=>'Item name']);
                         echo $this->Form->control('item_quantity');
-                        echo $this->Form->control('item_price');
-                        echo $this->Form->control('quantity_threshold');
-                        echo $this->Form->control('description');
-                        echo $this->Form->control('category_id');
+                        echo $this->Form->control('item_price',['label'=>'item price($)']);
+                        echo $this->Form->control('quantity_threshold',['label'=>'Inventory Alert Threshold']);
+                        echo $this->Form->control('description',['label'=>'Item description']);
+                        echo $this->Form->control('category_id',['label'=>'Item category']);
 //                        echo $this->Form->control('orders_id', ['options' => $orders]);
                         ?>
                     </fieldset>

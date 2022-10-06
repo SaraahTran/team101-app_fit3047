@@ -51,7 +51,7 @@ $this->Form->setTemplates($formTemplate);
 
                 <?php
                 echo $this->Form->control('date');
-                echo $this->Form->control('total');
+                echo $this->Form->control('total',['label'=>'order total($)']);
                 echo $this->Form->control('customer_id', ['options' => $customers]);
                 //                        echo $this->Form->control('items_id', ['options' => $items]);
                 ?>

@@ -34,6 +34,12 @@
             <div class = "modal-body">
 
                 <table class="table table-bordered" id="dataTable" width="100%">
+
+
+                    <tr>
+                        <th><?= __('ID') ?></th>
+                        <td><?= $this->Number->format($category->id) ?></td>
+                    </tr>
                     <tr>
                         <th><?= __('Name') ?></th>
                         <td><?= h($category->name) ?></td>
@@ -42,10 +48,7 @@
                         <th><?= __('Description') ?></th>
                         <td><?= h($category->description) ?></td>
                     </tr>
-                    <tr>
-                        <th><?= __('ID') ?></th>
-                        <td><?= $this->Number->format($category->id) ?></td>
-                    </tr>
+
                 </table>
 
             </div>

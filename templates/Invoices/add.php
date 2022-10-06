@@ -49,7 +49,7 @@ $this->Form->setTemplates($formTemplate);
 
                         <?php
 
-                        echo $this->Form->control('invoice_amount');
+                        echo $this->Form->control('invoice_amount',['label'=>'invoice amount($)']);
                         echo $this->Form->control('order_id', ['options' => $orders]);
                         ?>
                     </fieldset>
