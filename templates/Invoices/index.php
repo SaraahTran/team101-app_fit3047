@@ -15,8 +15,8 @@
             <thead>
                 <tr>
                     <th><?= h('id') ?></th>
-                    <th><?= h('invoice_amount') ?></th>
-                    <th><?= h('order_id') ?></th>
+                    <th><?= h('invoice amount($)') ?></th>
+                    <th><?= h('order id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

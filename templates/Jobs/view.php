@@ -34,15 +34,16 @@
         <div class="card-body">
 
             <div class = "modal-body">
-                <h3><?= h($job->id) ?></h3>
+                <h3><?= h($job->job_name) ?></h3>
                 <table class="table table-bordered" id="dataTable" width="100%">
-                    <tr>
-                        <th><?= __('Job Desc') ?></th>
-                        <td><?= h($job->job_desc) ?></td>
-                    </tr>
+
                     <tr>
                         <th><?= __('Id') ?></th>
                         <td><?= $this->Number->format($job->id) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Name') ?></th>
+                        <td><?= h($job->job_name) ?></td>
                     </tr>
                     <tr>
                         <th><?= __('Job Price') ?></th>
@@ -55,6 +56,10 @@
                     <tr>
                         <th><?= __('Job Time') ?></th>
                         <td><?= h($job->job_time) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Job Description') ?></th>
+                        <td><?= h($job->job_desc) ?></td>
                     </tr>
                 </table>
 

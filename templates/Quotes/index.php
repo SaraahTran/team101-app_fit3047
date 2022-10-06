@@ -15,9 +15,9 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('quote_amount') ?></th>
-                    <th><?= $this->Paginator->sort('order_id') ?></th>
+                    <th><?= h('id') ?></th>
+                    <th><?= h('quote amount($)') ?></th>
+                    <th><?= h('order id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

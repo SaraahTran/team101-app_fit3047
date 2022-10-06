@@ -29,10 +29,10 @@
         <table class="table table-bordered" id="dataTable" width="100%">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('customer_name') ?></th>
-                <th><?= $this->Paginator->sort('date') ?></th>
-                <th><?= $this->Paginator->sort('total') ?></th>
+                <th><?= h('id') ?></th>
+                <th><?= h('customer name') ?></th>
+                <th><?= h('date') ?></th>
+                <th><?= h('total($)') ?></th>
 
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>

@@ -36,17 +36,19 @@
 
                 <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
-                        <th><?= __('Quote Amount') ?></th>
-                        <td><?= h($quote->quote_amount) ?></td>
+                        <th><?= __('Quote ID') ?></th>
+                        <td><?= $this->Number->format($quote->id) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Order') ?></th>
+                        <th><?= __('Order ID') ?></th>
                         <td><?= $quote->has('order') ? $this->Html->link($quote->order->id, ['controller' => 'Orders', 'action' => 'view', $quote->order->id]) : '' ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Id') ?></th>
-                        <td><?= $this->Number->format($quote->id) ?></td>
+                        <th><?= __('Quote Amount($)') ?></th>
+                        <td><?= h($quote->quote_amount) ?></td>
                     </tr>
+
+
                 </table>
 
             </div>

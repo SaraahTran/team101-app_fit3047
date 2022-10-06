@@ -38,7 +38,7 @@
 </div>
 <div class="row">
     <aside class="column">
-        <div class="side-nav">
+      
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
@@ -46,7 +46,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $inventory->id), 'class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']
             ) ?>
 
-        </div>
+  
         <?= $this->Html->link(__('List Inventories'), ['action' => 'index'], ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
     </aside>
 

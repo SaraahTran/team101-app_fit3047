@@ -32,15 +32,16 @@
 
                 <table class="table table-bordered" id="dataTable" width="100%">
                     <tr>
-                        <th><?= __('Order ID') ?></th>
-                        <td><?= $invoice->has('order') ? $this->Html->link($invoice->order->id, ['controller' => 'Orders', 'action' => 'view', $invoice->order->id]) : '' ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('ID') ?></th>
+                        <th><?= __('Invoice ID') ?></th>
                         <td><?= $this->Number->format($invoice->id) ?></td>
                     </tr>
                     <tr>
-                        <th><?= __('Invoice Amount') ?></th>
+                        <th><?= __('Order ID') ?></th>
+                        <td><?= $invoice->has('order') ? $this->Html->link($invoice->order->id, ['controller' => 'Orders', 'action' => 'view', $invoice->order->id]) : '' ?></td>
+                    </tr>
+
+                    <tr>
+                        <th><?= __('Invoice Amount($)') ?></th>
                         <td><?= $this->Number->format($invoice->invoice_amount) ?></td>
                     </tr>
                 </table>

@@ -16,11 +16,11 @@
             <thead>
                 <tr>
                     <th><?= h('id') ?></th>
-                    <th><?= h('job_name') ?></th>
-                    <th><?= h('job_desc') ?></th>
-                    <th><?= h('job_price') ?></th>
-                    <th><?= h('job_time') ?></th>
-                    <th><?= h('job_duration') ?></th>
+                    <th><?= h('job name') ?></th>
+                    <th><?= h('job description') ?></th>
+                    <th><?= h('job price') ?></th>
+                    <th><?= h('job start time') ?></th>
+                    <th><?= h('job duration') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

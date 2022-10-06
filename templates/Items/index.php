@@ -25,11 +25,11 @@
             <tr>
                 <th><?= h('id') ?></th>
                 <th><?= h('name') ?></th>
-                <th><?= h('item_quantity') ?></th>
-                <th><?= h('item_price') ?></th>
-                <th><?= h('quantity_threshold') ?></th>
+                <th><?= h('item quantity') ?></th>
+                <th><?= h('item price') ?></th>
+                <th><?= h('quantity threshold') ?></th>
                 <th><?= h('description') ?></th>
-                <th><?= h('category_id') ?></th>
+                <th><?= h('category') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>

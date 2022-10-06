@@ -58,7 +58,7 @@ $this->Form->setTemplates($formTemplate);
 
 <div class="row">
     <aside class="column">
-        <div class="side-nav">
+
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
@@ -66,7 +66,7 @@ $this->Form->setTemplates($formTemplate);
                 ['confirm' => __('Are you sure you want to delete # {0}?', $category->id), 'class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']
             ) ?>
 
-        </div>
+
         <?= $this->Html->link(__('List Categories'), ['action' => 'index'],  ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>
     </aside>
 
