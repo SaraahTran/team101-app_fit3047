@@ -57,7 +57,10 @@ class InvoicesController extends AppController
 
 
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
-
+            if($invoice->invoice_amount<=0){
+                $this->Flash->info(__('The Invoice could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $invoice->id]);
+            }
 
 //            $invoice->invoice_amount = (float)$invoice->order->total;
             if ($this->Invoices->save($invoice)) {
@@ -86,6 +89,12 @@ class InvoicesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
+
+            if($invoice->invoice_amount<=0){
+                $this->Flash->info(__('The Invoice could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $invoice->id]);
+            }
+
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));
 

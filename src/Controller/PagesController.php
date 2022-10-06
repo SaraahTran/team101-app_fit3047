@@ -42,9 +42,18 @@ class PagesController extends AppController
      * @throws \Cake\Http\Exception\NotFoundException When the view file could not
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
+     * @property \App\Model\Table\JobsTable $Jobs
+     * @property \App\Model\Table\CustomersTable $Customers
      */
     public function display(string ...$path): ?Response
     {
+
+
+        $job = $this->fetchTable('Jobs')->find()->toArray();
+
+        $cust = $this->fetchTable('Customers')->find()->toArray();
+        $items = $this->fetchTable('Items')->find()->toArray();
+        $orderS = $this->fetchTable('Orders')->find()->toArray();
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,7 +68,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage'));
+        $this->set(compact('page','job','cust','items','orderS', 'subpage'));
 
         try {
             return $this->render(implode('/', $path));
@@ -69,5 +78,6 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+
     }
 }

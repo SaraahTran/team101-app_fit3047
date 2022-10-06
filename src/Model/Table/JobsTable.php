@@ -51,6 +51,11 @@ class JobsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->scalar('job_name')
+            ->maxLength('job_name', 20)
+            ->requirePresence('job_name', 'create')
+            ->notEmptyString('job_name');
+        $validator
             ->scalar('job_desc')
             ->maxLength('job_desc', 256)
             ->requirePresence('job_desc', 'create')

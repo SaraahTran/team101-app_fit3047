@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th><?= h('id') ?></th>
+                    <th><?= h('job_name') ?></th>
                     <th><?= h('job_desc') ?></th>
                     <th><?= h('job_price') ?></th>
                     <th><?= h('job_time') ?></th>
@@ -27,6 +28,7 @@
                 <?php foreach ($jobs as $job): ?>
                 <tr>
                     <td><?= $this->Number->format($job->id) ?></td>
+                    <td><?= h($job->job_name) ?></td>
                     <td><?= h($job->job_desc) ?></td>
                     <td><?= $this->Number->format($job->job_price) ?></td>
                     <td><?= h($job->job_time) ?></td>
@@ -44,11 +46,10 @@
     <div class="paginator">
 
     </div>
-
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
-
-    </script>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+
+</script>

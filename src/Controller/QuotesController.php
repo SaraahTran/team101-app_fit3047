@@ -52,6 +52,10 @@ class QuotesController extends AppController
         $quote = $this->Quotes->newEmptyEntity();
         if ($this->request->is('post')) {
             $quote = $this->Quotes->patchEntity($quote, $this->request->getData());
+            if($quote->quote_amount<=0){
+                $this->Flash->info(__('The Quote could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $quote->id]);
+            }
             if ($this->Quotes->save($quote)) {
                 $this->Flash->success(__('The quote has been saved.'));
 
@@ -77,6 +81,10 @@ class QuotesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $quote = $this->Quotes->patchEntity($quote, $this->request->getData());
+            if($quote->quote_amount<=0){
+                $this->Flash->info(__('The Quote could not be edit. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $quote->id]);
+            }
             if ($this->Quotes->save($quote)) {
                 $this->Flash->success(__('The quote has been saved.'));
 

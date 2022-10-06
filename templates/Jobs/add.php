@@ -46,6 +46,7 @@ $this->Form->setTemplates($formTemplate);
                     <fieldset>
                         <legend><?= __('Add Job') ?></legend>
                         <?php
+                        echo $this->Form->control('job_name');
                         echo $this->Form->control('job_desc');
                         echo $this->Form->control('job_price');
                         echo $this->Form->control('job_time');

@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Order $order
  * @var \Cake\Collection\CollectionInterface|string[] $customers
- * @var \Cake\Collection\CollectionInterface|string[] $items
+ * @var \Cake\Collection\CollectionInterface|string[] $itemss
+ * @var \Cake\Collection\CollectionInterface|string[] $customer
  */
+
 
 $formTemplate =
     [
@@ -48,7 +51,6 @@ $this->Form->setTemplates($formTemplate);
                     <div class="orders form content">
                         <?= $this->Form->create($order) ?>
                         <fieldset>
-                            <legend><?= __('Add Order') ?></legend>
 
                         </fieldset>
 
@@ -59,15 +61,15 @@ $this->Form->setTemplates($formTemplate);
                                 <th><?= __('Stock available') ?></th>
                                 <th><?= __('Quantity') ?></th>
                             </tr>
-                            <?php foreach ($items as $key=>$item) : ?>
+
+                            <?php foreach ( $itemss as $item) :?>
                             <tr>
-                                <td><?= $this->Form->control('items.'.$key.'.id', ['type' => 'checkbox', 'hiddenField' => false ,  'value' => $item,'label'=>false]) ?></td>
-                                <td><?= h($item) ?></td>
-                                <td><?= h($item) ?></td>
-                                <td><?= $this->Form->control('items.'.$key.'._joinData.line_quantity') ?></td>
-
-
+                                <td><?= $this->Form->control('items.'.$item->id.'.id', ['type' => 'checkbox', 'hiddenField' => false ,  'value' => $item->id,'label'=>false]) ?></td>
+                                <td><?= h($item->name) ?></td>
+                                <td><?= h($item->item_quantity) ?></td>
+                                <td><?= $this->Form->control('items.'.$item->id.'._joinData.line_quantity') ?></td>
                                 <?php endforeach; ?>
+                            </tr>
 
                         </table>
 
@@ -75,16 +77,9 @@ $this->Form->setTemplates($formTemplate);
 
                             <?php
                             echo $this->Form->control('date');
-                            //                echo $this->Form->control('total');
-
-                            echo $this->Form->control('customer_id');
-
-
+                            echo $this->Form->control('customer_id', ['options' => $customers]);
                             ?>
                         </fieldset>
-
-
-
                     </div>
 
                     <br>

@@ -12,6 +12,10 @@
  * @since     0.10.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
+ * @var \Cake\Collection\CollectionInterface|string[] $job
+ * @var \Cake\Collection\CollectionInterface|string[] $cust
+ * @var \Cake\Collection\CollectionInterface|string[] $items
+ * @var \Cake\Collection\CollectionInterface|string[] $orderS
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -90,6 +94,118 @@ endif;
                 <!-- Content Row -->
 
                 <div class="row">
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Customers</div>
+                                            <?php $num = 0 ?>
+                                            <?php foreach ($cust as $cust): ?>
+                                                <?php $num ++ ?>
+                                            <?php endforeach; ?>
+
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($num) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Items</div>
+                                            <?php $numI = 0 ?>
+                                            <?php foreach ($items as $itemss): ?>
+                                                <?php $numI ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numI) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                             aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Orders</div>
+                                            <?php $numO = 0 ?>
+                                            <?php foreach ($orderS as $orders): ?>
+                                                <?php $numO ++ ?>
+                                            <?php endforeach; ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= h($numO) ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <!-- Area Chart -->
                     <div class="col-xl-6 col-lg-7">
@@ -108,9 +224,9 @@ endif;
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="myAreaChart"></canvas>
-                                </div>
+
+                                    <canvas id="myChart" width="400" height="400"></canvas>
+
                             </div>
                         </div>
                     </div>
@@ -139,55 +255,45 @@ endif;
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
+
                                 <fieldset>
                                     <legend>Tasks to do:</legend>
 
                                     <div>
-                                        <input type="checkbox" id="scales" name="scales"
-                                               checked>
-                                        <label for="scales">Fix amp for customer </label>
+
+                                        <table class="table table-bordered" id="dataTable"  >
+                                            <thead>
+                                            <tr>
+                                                <th><?= h('id') ?></th>
+                                                <th><?= h('job_name') ?></th>
+                                                <th><?= h('job_price') ?></th>
+                                                <th><?= h('job_time') ?></th>
+                                                <th><?= h('job_duration') ?></th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($job as $job): ?>
+                                                <tr>
+
+                                                    <td><?= $this->Number->format($job->id) ?></td>
+                                                    <td><?= h($job->job_name) ?></td>
+                                                    <td><?= $this->Number->format($job->job_price),'$' ?></td>
+                                                    <td><?= h($job->job_time) ?></td>
+                                                    <td><?= $this->Number->format($job->job_duration),' day' ?></td>
+
+                                                </tr>
+                                            <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#dataTable').DataTable();
+                                            });
+
+                                        </script>
                                     </div>
 
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="horns" name="horns">
-                                        <label for="horns">Stock up on guitar</label>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-                                        </div>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-
-                                            <div>
-                                                <input type="checkbox" id="horns" name="horns">
-                                                <label for="horns">Stock up on guitar</label>
-                                            </div>
-
-                                            <div>
-                                                <input type="checkbox" id="horns" name="horns">
-                                                <label for="horns">Stock up on guitar</label>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div>
-                                            <input type="checkbox" id="horns" name="horns">
-                                            <label for="horns">Stock up on guitar</label>
-                                        </div></div>
                                 </fieldset>
                             </div>
                         </div>
@@ -196,91 +302,7 @@ endif;
 
             </div>
 
-            <!-- Content Row -->
-            <div class="row">
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Total Customers</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Items</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-info shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Job Tasks
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                     aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pending Requests Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Total Orders</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Content Row -->
@@ -316,3 +338,116 @@ endif;
 
 </body>
 </html>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    var datas = new Array(0,0,0,0,0,0,0,0,0,0,0,0);
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+
+
+
+    <?php
+
+
+    foreach ($orderS as $order):
+    $datee = $order->date;?>
+    var a = "<?php echo $datee;?>"
+    var b = "<?php echo $order->total;?>"
+
+    var date1 = new Date(2022,0,1);
+    var date2 = new Date(2022,0,30);
+
+    var date3 = new Date(2022,1,28);
+    var date4 = new Date(2022,2,30);
+    var date5 = new Date(2022,3,30);
+    var date6 = new Date(2022,4,30);
+    var date7 = new Date(2022,5,30);
+    var date8 = new Date(2022,6,30);
+    var date9 = new Date(2022,7,30);
+    var date10 = new Date(2022,8,30);
+    var date11 = new Date(2022,9,30);
+    var date12 = new Date(2022,10,30);
+    var date13 = new Date(2022,11,30);
+    var dateee = new Date(a);
+    if(date1.getTime()<dateee&&dateee<date2.getTime()){
+        let c = parseInt(datas[0]) + parseInt(b);
+        datas[0] = c;
+    }else if(date2.getTime()<dateee&&dateee<date3.getTime()){
+        let c = parseInt(datas[1]) + parseInt(b);
+        datas[1] = c;
+
+    }else if(date3.getTime()<dateee&&dateee<date4.getTime()){
+        let c = parseInt(datas[2]) + parseInt(b);
+        datas[2] = c;
+    }else if(date4.getTime()<dateee&&dateee<date5.getTime()){
+        let c = parseInt(datas[3]) + parseInt(b);
+        datas[3] = c;
+    }else if(date5.getTime()<dateee&&dateee<date6.getTime()){
+        let c = parseInt(datas[4]) + parseInt(b);
+        datas[4] = c;
+    }else if(date6.getTime()<dateee&&dateee<date7.getTime()){
+        let c = parseInt(datas[5]) + parseInt(b);
+        datas[5] = c;
+    }else if(date7.getTime()<dateee&&dateee<date8.getTime()){
+        let c = parseInt(datas[6]) + parseInt(b);
+        datas[6] = c;
+    }else if(date8.getTime()<dateee&&dateee<date9.getTime()){
+        let c = parseInt(datas[7]) + parseInt(b);
+        datas[7] = c;
+    }else if(date9.getTime()<dateee&&dateee<date10.getTime()){
+        let c = parseInt(datas[8]) + parseInt(b);
+        datas[8] = c;
+    }else if(date10.getTime()<dateee&&dateee<date11.getTime()){
+        let c = parseInt(datas[9]) + parseInt(b);
+        datas[9] = c;
+
+    }else if(date11.getTime()<dateee&&dateee<date12.getTime()){
+        let c = parseInt(datas[10]) + parseInt(b);
+        datas[10] = c;
+    }else if(date12.getTime()<dateee&&dateee<date13.getTime()){
+        let c = parseInt(datas[11]) + parseInt(b);
+        datas[11] = c;
+    }
+
+
+
+    <?php endforeach; ?>
+
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            datasets: [{
+                label: '$ of each month',
+                data: datas,
+
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

@@ -7,10 +7,13 @@ namespace App\Controller;
  * Orders Controller
  *
  * @property \App\Model\Table\OrdersTable $Orders
- * @property \App\Model\Table\QuotesTable $Quotes
- * @property \App\Model\Table\InvoicesTable $Invoices
+
  * @method \App\Model\Entity\Order[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
+
+
+
+
 class OrdersController extends AppController
 {
     /**
@@ -51,16 +54,15 @@ class OrdersController extends AppController
      */
     public function add()
     {
+        $itemss = $this->fetchTable('Items')->find()->toArray();
+
+        $customer = $this->fetchTable('Customers')->find()->toArray();
         $order = $this->Orders->newEmptyEntity();
 
         if ($this->request->is('post')) {
-
-
             $requestData = $this->request->getData();
-//            debug($requestData);
-//            exit;
-            foreach($requestData['items'] as $key => $data):
 
+            foreach($requestData['items'] as $key => $data):
                 // check to see if any of the arrays have null ids (have not been selected):
                 if(empty($data['id'])){
                     // if found, remove from data array
@@ -70,8 +72,6 @@ class OrdersController extends AppController
             $productsWithSubtotal = $requestData['items'];
             $order_items = 0;
 
-//iterating through the $requestData array to calculate subtotal for each
-//product
             foreach($requestData['items'] as $key=>$p){
                 $fetchedProduct = $this->Orders->Items->get($p['id']);
                 //fetching the price
@@ -79,19 +79,21 @@ class OrdersController extends AppController
                 $itemQ = (int) $p['_joinData']['line_quantity'];
                 $itemTh = (int)$fetchedProduct->quantity_threshold;
                 if($currentS<=$itemTh){
-                    return $this->redirect(['action' => 'add']);
+                    $this->Flash->info(__('The order could not be create. Please, try again.'));
 
+                    return $this->redirect(['action' => 'add', $order->id]);
                 }
                 if($currentS-$itemQ<=$itemTh){
-                    return $this->redirect(['action' => 'add']);
+                    $this->Flash->info(__('The order could not be create. Please, try again.'));
+                    return $this->redirect(['action' => 'add', $order->id]);
                 }
                 if($itemQ == null){
-
-                    return $this->redirect(['action' => 'add']);
+                    $this->Flash->info(__('The order could not be create. Please, try again.'));
+                    return $this->redirect(['action' => 'add', $order->id]);
                 }
                 if($itemQ <= 0){
-
-                    return $this->redirect(['action' => 'add']);
+                    $this->Flash->info(__('The order could not be create. Please, try again.'));
+                    return $this->redirect(['action' => 'add', $order->id]);
                 }
                 $itemsPrice = (float) $fetchedProduct->item_price;
                 //product quantity
@@ -118,62 +120,29 @@ class OrdersController extends AppController
 
 
 
-
             if ($this->Orders->save($order)) {
+
+
+                $invoices = $this->fetchTable('Invoices')->newEmptyEntity();
+                $invoices->invoice_amount  = $order_items;
+                $invoices->order_id  = $order->id;
+                $this->fetchTable('Invoices')->save($invoices);
+
+
+                $quotes = $this->fetchTable('Quotes')->newEmptyEntity();
+                $quotes->quote_amount  = $order_items;
+                $quotes->order_id  = $order->id;
+                $this->fetchTable('Quotes')->save($quotes);
+
+
                 $this->Flash->success(__('The order has been saved.'));
-//                $this->addQuote();
-//                $this->addInvoice();
-
-
-                return $this->redirect(['action' => 'index']);
-            }
+                return $this->redirect(['action' => 'index']);}
             $this->Flash->error(__('The order could not be saved. Please, try again.'));
         }
         $customers = $this->Orders->Customers->find('list', ['limit' => 200])->all();
         $items = $this->Orders->Items->find('list', ['limit' => 200])->all();
-        $this->set(compact('order', 'customers', 'items'));
+        $this->set(compact('order', 'customers', 'items','itemss','customer'));
     }
-
-
-//    public function addInvoice(){
-//        $invoiceTable = $this->getTableLocator()->get('Invoices');
-//        $invoice = $invoiceTable->newEmptyEntity();
-//        if ($this->request->is('post')) {
-//
-//
-//            $invoice->invoice_amount = $this->Orders->total;
-//            $invoice->order_id = $this->Orders->id;
-//
-//            if ($this->Invoices->save($invoice)) {
-//
-//                $this->Flash->success(__('The invoice has been saved.'));
-//
-//                return $this->redirect(['action' => 'index']);
-//            }
-//            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-//        }
-//        $orders = $this->Invoices->Orders->find('list', ['limit' => 200])->all();
-//        $this->set(compact('invoice', 'orders'));
-//    }
-//
-//    public function addQuote(){
-//        $quoteTable = $this->getTableLocator()->get('Quotes');
-//        $quote = $quoteTable->newEmptyEntity();
-//        if ($this->request->is('post')) {
-//            $quote->quote_amount = $this->Orders->total;
-//            $quote->order_id = $this->Orders->id;
-//            if ($this->Quotes->save($quote)) {
-//                $this->Flash->success(__('The quote has been saved.'));
-//
-//                return $this->redirect(['action' => 'index']);
-//            }
-//            $this->Flash->error(__('The quote could not be saved. Please, try again.'));
-//        }
-//        $orders = $this->Quotes->Orders->find('list', ['limit' => 200])->all();
-//        $this->set(compact('quote', 'orders'));
-//
-//
-//    }
 
 
 
@@ -188,11 +157,23 @@ class OrdersController extends AppController
      */
     public function edit($id = null)
     {
+        $itemss = $this->fetchTable('Items')->find()->toArray();
+
+        $customer = $this->fetchTable('Customers')->find()->toArray();
         $order = $this->Orders->get($id, [
             'contain' => ['Items'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
+            if($order->total<=0){
+                $this->Flash->info(__('The order could not be save. Please, try again.'));
+
+                return $this->redirect(['action' => 'edit', $order->id]);
+            }
+
+
+
+
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
 
@@ -202,7 +183,7 @@ class OrdersController extends AppController
         }
         $customers = $this->Orders->Customers->find('list', ['limit' => 200])->all();
         $items = $this->Orders->Items->find('list', ['limit' => 200])->all();
-        $this->set(compact('order', 'customers', 'items'));
+        $this->set(compact('order', 'customers', 'items','itemss','customer'));
     }
 
     /**
@@ -214,6 +195,10 @@ class OrdersController extends AppController
      */
     public function delete($id = null)
     {
+
+
+
+
         $this->request->allowMethod(['post', 'delete']);
         $order = $this->Orders->get($id);
         if ($this->Orders->delete($order)) {
@@ -223,5 +208,19 @@ class OrdersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

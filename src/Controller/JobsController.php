@@ -66,6 +66,15 @@ class JobsController extends AppController
         if ($this->request->is('post')) {
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
 
+            if($job->job_price<=0){
+                $this->Flash->info(__('The Job could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add']);
+            }
+            if($job->job_duration<=0){
+                $this->Flash->info(__('The Job could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add']);
+
+            }
             // Changed: Set the user_id from the current user.
 //            $job->user_id = $this->request->getAttribute('identity')->getIdentifier();
 
@@ -98,6 +107,19 @@ class JobsController extends AppController
 //        $this->Authorization->authorize($job);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
+
+            if($job->job_price<=0){
+                $this->Flash->info(__('The Job could not be edit. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $job->id]);
+            }
+            if($job->job_duration<=0){
+                $this->Flash->info(__('The Job could not be edit. Please, try again.'));
+                return $this->redirect(['action' => 'edit'], $job->id);
+
+            }
+
+
+
             if ($this->Jobs->save($job)) {
                 $this->Flash->success(__('The job has been saved.'));
 

@@ -22,8 +22,8 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-
     <?= $this->Html->script('/vendor/jquery/jquery.min.js')?>
+
 
 </head>
 
@@ -79,7 +79,7 @@
 
                         <a class="collapse-item" href="<?= $this->Url->build('/categories') ?>"> <i class="fas fa-fw fa-solid fa-file-contract"></i>  Item Categories</a>
                         <a class="collapse-item" href="<?= $this->Url->build('/items') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>  Items</a>
-                        <a class="collapse-item" href="<?= $this->Url->build('/inventories') ?>"> <i class="fas fa-fw fa-solid fa-warehouse"></i>  Inventories</a>
+                        
                     </div>
                 </div>
             </li>
@@ -232,6 +232,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js')?>
     <!-- Bootstrap core JavaScript-->
 
@@ -250,7 +254,7 @@
 
     <?= $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js')?>
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>.
+
 
 
 
