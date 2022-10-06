@@ -58,6 +58,7 @@ $this->Form->setTemplates($formTemplate);
                             <tr>
                                 <th><?= __('Add to order?') ?></th>
                                 <th><?= __('Product Name') ?></th>
+                                <th><?= __('Product Price($)') ?></th>
                                 <th><?= __('Stock available') ?></th>
                                 <th><?= __('Quantity') ?></th>
                             </tr>
@@ -66,6 +67,7 @@ $this->Form->setTemplates($formTemplate);
                             <tr>
                                 <td><?= $this->Form->control('items.'.$item->id.'.id', ['type' => 'checkbox', 'hiddenField' => false ,  'value' => $item->id,'label'=>false]) ?></td>
                                 <td><?= h($item->name) ?></td>
+                                <td><?= h($item->item_price) ?></td>
                                 <td><?= h($item->item_quantity) ?></td>
                                 <td><?= $this->Form->control('items.'.$item->id.'._joinData.line_quantity') ?></td>
                                 <?php endforeach; ?>
