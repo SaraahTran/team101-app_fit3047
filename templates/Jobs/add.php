@@ -49,7 +49,7 @@ $this->Form->setTemplates($formTemplate);
                         echo $this->Form->control('job_name');
 
                         echo $this->Form->control('job_price');
-                        echo $this->Form->control('job_start_time');
+                        echo $this->Form->control('job_time',['label'=>'job start time']);
                         echo $this->Form->control('job_duration');
                         echo $this->Form->control('job_desc',['label'=>'job description','rows'=>5]);
                         ?>

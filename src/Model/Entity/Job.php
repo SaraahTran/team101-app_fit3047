@@ -31,5 +31,6 @@ class Job extends Entity
         'job_price' => true,
         'job_time' => true,
         'job_duration' => true,
+        'job_status' => true,
     ];
 }

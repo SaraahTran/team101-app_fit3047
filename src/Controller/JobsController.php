@@ -153,6 +153,57 @@ class JobsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+
+/**
+ * done method
+ */
+
+    public function done($id = null)
+    {
+
+        $job = $this->Jobs->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $job = $this->Jobs->get($id);
+//        $this->Authorization->authorize($job);
+            $job->job_status = 1;
+            if ($this->Jobs->save($job)) {
+                $this->Flash->success(__('The job has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+        }
+        $this->set(compact('job'));
+    }
+    /**
+     * doing method
+     */
+
+    public function doing($id = null)
+    {
+
+        $job = $this->Jobs->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $job = $this->Jobs->get($id);
+//        $this->Authorization->authorize($job);
+            $job->job_status = 0;
+            if ($this->Jobs->save($job)) {
+                $this->Flash->success(__('The job has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+        }
+        $this->set(compact('job'));
+    }
 }
 
 

@@ -265,15 +265,18 @@ endif;
                                             <thead>
                                             <tr>
                                                 <th><?= h('id') ?></th>
-                                                <th><?= h('job_name') ?></th>
-                                                <th><?= h('job_price') ?></th>
-                                                <th><?= h('job_time') ?></th>
-                                                <th><?= h('job_duration') ?></th>
+                                                <th><?= h('job name') ?></th>
+                                                <th><?= h('job price($)') ?></th>
+                                                <th><?= h('job time') ?></th>
+                                                <th><?= h('job duration') ?></th>
+                                                <th><?= h('job status') ?></th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($job as $job): ?>
+                                            <?php foreach ($job as $job):
+
+                                                ?>
                                                 <tr>
 
                                                     <td><?= $this->Number->format($job->id) ?></td>
@@ -281,7 +284,12 @@ endif;
                                                     <td><?= $this->Number->format($job->job_price),'$' ?></td>
                                                     <td><?= h($job->job_time) ?></td>
                                                     <td><?= $this->Number->format($job->job_duration),' day' ?></td>
-
+                                                    <?php if ($job->job_status == 1):?>
+                                                        <td><?= h('done');?></td>
+                                                    <?php endif; ?>
+                                                    <?php  if($job->job_status == 0):?>
+                                                        <td><?= h('doing');?></td>
+                                                    <?php endif; ?>
                                                 </tr>
                                             <?php endforeach; ?>
                                             </tbody>

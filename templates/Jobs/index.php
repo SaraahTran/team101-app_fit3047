@@ -19,9 +19,11 @@
                     <th><?= h('id') ?></th>
                     <th><?= h('job name') ?></th>
                     <th><?= h('job description') ?></th>
+                    <th><?= h('Done?') ?></th>
                     <th><?= h('job price($)') ?></th>
                     <th><?= h('job start time') ?></th>
                     <th><?= h('job duration') ?></th>
+
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -31,10 +33,19 @@
                     <td><?= $this->Number->format($job->id) ?></td>
                     <td><?= h($job->job_name) ?></td>
                     <td><?= h($job->job_desc) ?></td>
+                    <?php if ($job->job_status == 1):?>
+                        <td><?= h('Done') ?></td>
+                    <?php endif; ?>
+                    <?php  if($job->job_status == 0):?>
+                        <td class="actions"><?= $this->Form->postLink(__('Doing'), ['action' => 'done', $job->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]);?></td>
+                    <?php endif; ?>
                     <td><?= $this->Number->format($job->job_price),'$' ?></td>
                     <td><?= h($job->job_time) ?></td>
                     <td><?= $this->Number->format($job->job_duration),'  day' ?></td>
+
+
                     <td class="actions">
+
                         <?= $this->Html->link(__('View'), ['action' => 'view', $job->id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['class' => 'btn btn-primary btn-sm'], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]) ?>

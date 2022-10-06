@@ -61,6 +61,10 @@
                         <th><?= __('Job Description') ?></th>
                         <td><?= h($job->job_desc) ?></td>
                     </tr>
+                    <tr>
+                        <th><?= __('Job Status') ?></th>
+                        <td><?= h($job->job_status) ?></td>
+                    </tr>
                 </table>
 
             </div>

@@ -50,9 +50,10 @@ $this->Form->setTemplates($formTemplate);
                     <?php
 
                     echo $this->Form->control('job_price');
-                    echo $this->Form->control('job_start_time');
+                    echo $this->Form->control('job_time',['label'=>'job start time']);
                     echo $this->Form->control('job_duration',['label'=>'job duration($)']);
                     echo $this->Form->control('job_desc',['label'=>'job description','rows'=>5]);
+                    echo $this->Form->control('job_status',['label'=>'job status']);
                     ?>
                 </fieldset>
             </div>

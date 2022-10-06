@@ -25,6 +25,7 @@ class JobsFixture extends TestFixture
                 'job_price' => 1,
                 'job_time' => '2022-09-17 02:43:45',
                 'job_duration' => 1,
+                'job_status' => 0,
             ],
         ];
         parent::init();
