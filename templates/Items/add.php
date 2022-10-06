@@ -50,7 +50,7 @@ $this->Form->setTemplates($formTemplate);
                         echo $this->Form->control('item_quantity');
                         echo $this->Form->control('item_price',['label'=>'item price($)']);
                         echo $this->Form->control('quantity_threshold',['label'=>'Inventory Alert Threshold']);
-                        echo $this->Form->control('description',['label'=>'Item description']);
+                        echo $this->Form->control('description',['label'=>'Item description','rows'=>5]);
                         echo $this->Form->control('category_id',['label'=>'Item category']);
 //                        echo $this->Form->control('orders_id', ['options' => $orders]);
                         ?>
