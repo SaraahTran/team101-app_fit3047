@@ -84,10 +84,7 @@ $this->Form->setTemplates($formTemplate);
 
 
                                 <hr>
-                                <div class="text-center">
-
-                                    <a class="small" "><?= $this->Html->link("Create an Account!", ['action' => 'add']) ?></a>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
