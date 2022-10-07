@@ -18,12 +18,13 @@ class ItemsController extends AppController
      */
     public function index()
     {
+        $cate_I = $this->fetchTable('Customers')->find()->toArray();
 //        $this->paginate = [
 //            'contain' => ['Categories'],
 //        ];
 //        $items = $this->paginate($this->Items);
         $items = $this->Items->find()->contain(['Categories']);
-        $this->set(compact('items'));
+        $this->set(compact('items','cate_I'));
     }
 
     /**

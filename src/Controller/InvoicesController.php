@@ -21,12 +21,13 @@ class InvoicesController extends AppController
      */
     public function index()
     {
+        $cust_I = $this->fetchTable('Customers')->find()->toArray();
         $this->paginate = [
             'contain' => ['Orders'],
         ];
         $invoices = $this->paginate($this->Invoices);
 
-        $this->set(compact('invoices'));
+        $this->set(compact('invoices',"cust_I"));
     }
 
     /**
@@ -38,11 +39,14 @@ class InvoicesController extends AppController
      */
     public function view($id = null)
     {
+
+
+        $cust_I = $this->fetchTable('Customers')->find()->toArray();
         $invoice = $this->Invoices->get($id, [
             'contain' => ['Orders'],
         ]);
 
-        $this->set(compact('invoice'));
+        $this->set(compact('invoice','cust_I'));
     }
 
     /**

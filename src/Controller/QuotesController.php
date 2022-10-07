@@ -18,12 +18,13 @@ class QuotesController extends AppController
      */
     public function index()
     {
+        $cust_Q = $this->fetchTable('Customers')->find()->toArray();
         $this->paginate = [
             'contain' => ['Orders'],
         ];
         $quotes = $this->paginate($this->Quotes);
 
-        $this->set(compact('quotes'));
+        $this->set(compact('quotes','cust_Q'));
     }
 
     /**
@@ -35,11 +36,12 @@ class QuotesController extends AppController
      */
     public function view($id = null)
     {
+        $cust_Q = $this->fetchTable('Customers')->find()->toArray();
         $quote = $this->Quotes->get($id, [
             'contain' => ['Orders'],
         ]);
 
-        $this->set(compact('quote'));
+        $this->set(compact('quote','cust_Q'));
     }
 
     /**

@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Invoice $invoice
+ * @var \Cake\Collection\CollectionInterface|string[] $cust_I
  */
 ?>
 <legend><?= __('View Invoice') ?></legend>
@@ -39,7 +40,25 @@
                         <th><?= __('Order ID') ?></th>
                         <td><?= $invoice->has('order') ? $this->Html->link($invoice->order->id, ['controller' => 'Orders', 'action' => 'view', $invoice->order->id]) : '' ?></td>
                     </tr>
+                    <tr>
+                        <th><?= __('Customer ID') ?></th>
 
+                        <td><?= $invoice->order->has('customer_id') ? $this->Html->link($invoice->order->customer_id, ['controller' => 'Customers', 'action' => 'view', $invoice->order->customer_id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Customer Name') ?></th>
+                        <?php $cust = $invoice->order->customer_id  ?>
+                        <?php foreach ( $cust_I as $custs) :
+                            $custID = $custs->id;
+                            ?>
+
+                        <?php if ($custID == $cust) :  ?>
+                            <td><?= h($custs->cust_name) ?></td>
+
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    </tr>
                     <tr>
                         <th><?= __('Invoice Amount($)') ?></th>
                         <td><?= $this->Number->format($invoice->invoice_amount) ?></td>

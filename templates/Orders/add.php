@@ -50,9 +50,6 @@ $this->Form->setTemplates($formTemplate);
                 <div class = "modal-body">
                     <div class="orders form content">
                         <?= $this->Form->create($order) ?>
-                        <fieldset>
-
-                        </fieldset>
 
                         <table class="table table-bordered" id="dataTable" width="100%">
                             <tr>
@@ -82,26 +79,24 @@ $this->Form->setTemplates($formTemplate);
                             echo $this->Form->control('customer_id', ['options' => $customers]);
                             ?>
                         </fieldset>
-                    </div>
 
+                    </div>
                     <br>
 
                     <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
                     <?= $this->Form->end() ?>
 
+
                 </div></div>   </div></div>
         </div>
+<aside>
         <h4 class="heading"><?= __('Actions') ?></h4>
         <?= $this->Html->link(__('List Customers'), ['action' => 'index'], ['class'=>'btn btn-primary']) ?>
 
-        </aside>
-    </div>
+</aside>
 
 
-</div></div>
 
-
-</div>
 
 
 

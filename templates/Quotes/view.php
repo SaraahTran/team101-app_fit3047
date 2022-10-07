@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Quote $quote
+ * @var \Cake\Collection\CollectionInterface|string[] $cust_Q
  */
 ?>
 
@@ -42,6 +43,25 @@
                     <tr>
                         <th><?= __('Order ID') ?></th>
                         <td><?= $quote->has('order') ? $this->Html->link($quote->order->id, ['controller' => 'Orders', 'action' => 'view', $quote->order->id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                    <th><?= __('Customer ID') ?></th>
+
+                    <td><?= $quote->order->has('customer_id') ? $this->Html->link($quote->order->customer_id, ['controller' => 'Customers', 'action' => 'view', $quote->order->customer_id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Customer Name') ?></th>
+                        <?php $cust = $quote->order->customer_id  ?>
+                        <?php foreach ( $cust_Q as $custs) :
+                            $custID = $custs->id;
+                            ?>
+
+                            <?php if ($custID == $cust) :  ?>
+                            <td><?= h($custs->cust_name) ?></td>
+
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+
                     </tr>
                     <tr>
                         <th><?= __('Quote Amount($)') ?></th>

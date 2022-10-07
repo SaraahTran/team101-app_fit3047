@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Item[]|\Cake\Collection\CollectionInterface $items
+ * @var \Cake\Collection\CollectionInterface|string[] $cate_I
  */
 //echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
 //echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
@@ -30,10 +31,15 @@
                 <th><?= h('Inventory Alert Threshold') ?></th>
                 <th><?= h('description') ?></th>
                 <th><?= h('category') ?></th>
+
+
+
+
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
             <tbody>
+
             <?php foreach ($items as $item): ?>
                 <tr>
                     <td><?= $this->Number->format($item->id) ?></td>
