@@ -31,6 +31,7 @@
                 <th><?= h('Inventory Alert Threshold') ?></th>
                 <th><?= h('description') ?></th>
                 <th><?= h('category') ?></th>
+                <th><?= h('Inventory status') ?></th>
 
 
 
@@ -49,6 +50,13 @@
                     <td><?= $this->Number->format($item->quantity_threshold) ?></td>
                     <td><?= h($item->description) ?></td>
                     <td><?= h($item->category->name) ?></td>
+                    <?php if (($item->item_quantity)<=($item->quantity_threshold)) : ?>
+                        <td style="color: red"><?= h('Alert: Low Stock') ?></td>
+                        <?php endif; ?>
+                    <?php if (($item->item_quantity)>($item->quantity_threshold)) : ?>
+                        <td><?= h('Adequate') ?></td>
+                    <?php endif; ?>
+
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $item->id], ['class' => 'btn btn-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $item->id], ['class' => 'btn btn-primary btn-sm']) ?>
@@ -58,6 +66,7 @@
             <?php endforeach; ?>
             </tbody>
         </table>
+
     </div>
     <script>
         $(document).ready(function() {

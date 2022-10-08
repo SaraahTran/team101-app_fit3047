@@ -74,6 +74,11 @@ $this->Form->setTemplates($formTemplate);
             ['action' => 'delete', $order->id],
             ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']
         ) ?>
+<!--        --><?//= $this->Form->postLink(
+//            __('send email'),
+//            ['action' => 'send'],
+//            ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'class'=>'d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']
+//        ) ?>
 
 
         <?= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']) ?>

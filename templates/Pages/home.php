@@ -362,20 +362,20 @@ endif;
     var a = "<?php echo $datee;?>"
     var b = "<?php echo $order->total;?>"
 
-    var date1 = new Date(2022,0,1);
-    var date2 = new Date(2022,0,30);
+    var date1 = new Date(year,0,1);
+    var date2 = new Date(year,0,30);
 
-    var date3 = new Date(2022,1,28);
-    var date4 = new Date(2022,2,30);
-    var date5 = new Date(2022,3,30);
-    var date6 = new Date(2022,4,30);
-    var date7 = new Date(2022,5,30);
-    var date8 = new Date(2022,6,30);
-    var date9 = new Date(2022,7,30);
-    var date10 = new Date(2022,8,30);
-    var date11 = new Date(2022,9,30);
-    var date12 = new Date(2022,10,30);
-    var date13 = new Date(2022,11,30);
+    var date3 = new Date(year,1,28);
+    var date4 = new Date(year,2,30);
+    var date5 = new Date(year,3,30);
+    var date6 = new Date(year,4,30);
+    var date7 = new Date(year,5,30);
+    var date8 = new Date(year,6,30);
+    var date9 = new Date(year,7,30);
+    var date10 = new Date(year,8,30);
+    var date11 = new Date(year,9,30);
+    var date12 = new Date(year,10,30);
+    var date13 = new Date(year,11,30);
     var dateee = new Date(a);
     if(date1.getTime()<dateee&&dateee<date2.getTime()){
         let c = parseInt(datas[0]) + parseInt(b);
@@ -426,7 +426,7 @@ endif;
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
             datasets: [{
-                label: datas,
+                label: '$ of each month',
                 data: datas,
 
                 backgroundColor: [

@@ -395,7 +395,7 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Dear Customer, Your order has been accepted and the order is being processed.  </p>
+                                        <p>Dear Steve,  Please note that your product is out of stock..  </p>
                                         <p><b>Full name:</b> <?= h($full_name) ?></p>
                                         <p><b>Email address:</b> <?= $this->Html->link(h($email), 'mailto:' . h($email)) ?></p>
                                         <p><b>Date:</b> <?= h($created) ?></p>
@@ -440,4 +440,5 @@ endforeach;
 </table>
 </body>
 </html>
+
 
