@@ -31,7 +31,7 @@
                 <th><?= h('Inventory Alert Threshold') ?></th>
                 <th><?= h('description') ?></th>
                 <th><?= h('category') ?></th>
-                <th><?= h('Inventory status') ?></th>
+
 
 
 
@@ -45,17 +45,18 @@
                 <tr>
                     <td><?= $this->Number->format($item->id) ?></td>
                     <td><?= h($item->name) ?></td>
-                    <td><?= $this->Number->format($item->item_quantity) ?></td>
+                    <?php if (($item->item_quantity)<=($item->quantity_threshold)) : ?>
+                        <td style="color: red"><?= $this->Number->format($item->item_quantity) ?></td>
+                    <?php endif; ?>
+                    <?php if (($item->item_quantity)>($item->quantity_threshold)) : ?>
+                        <td><?= $this->Number->format($item->item_quantity) ?></td>
+                    <?php endif; ?>
+
                     <td><?= $this->Number->format($item->item_price) ?></td>
                     <td><?= $this->Number->format($item->quantity_threshold) ?></td>
                     <td><?= h($item->description) ?></td>
                     <td><?= h($item->category->name) ?></td>
-                    <?php if (($item->item_quantity)<=($item->quantity_threshold)) : ?>
-                        <td style="color: red"><?= h('Alert: Low Stock') ?></td>
-                        <?php endif; ?>
-                    <?php if (($item->item_quantity)>($item->quantity_threshold)) : ?>
-                        <td><?= h('Normal') ?></td>
-                    <?php endif; ?>
+
 
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $item->id], ['class' => 'btn btn-primary btn-sm']) ?>

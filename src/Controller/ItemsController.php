@@ -139,70 +139,10 @@ class ItemsController extends AppController
         } else {
             $this->Flash->error(__('The item could not be deleted. Please, try again.'));
         }
-        $this->checkItem();
         return $this->redirect(['action' => 'index']);
     }
 
-    /**
-     * check stock method
-     */
 
-    public function checkItem($id = null)
-    {
-
-        $itemm = $this->Items->get($id, [
-            'contain' => ['Categories', 'Orders'],
-        ]);
-
-//
-//                $cust = $this->fetchTable('Customers')->find()->all();
-//
-        //                $custID=$order->customer_id;
-//                foreach($cust as $cust){
-//                    if($custID == $cust->id){
-//                        $custName = $cust->cust_name;
-//                        $custEmail = $cust->cust_email;
-//                    }
-//
-//                }
-                $mailer = new Mailer('default');
-
-
-
-                // Setup email parameters
-                $mailer
-                    ->setEmailFormat('html')
-                    ->setTo(Configure::read('OrderMail.to'))
-                    ->setFrom(Configure::read('OrderMail.from'))
-                    ->setReplyTo(Configure::read('OrderMail.to'))
-                    ->setSubject('Inventory Alert from Item ID ' . h($itemm->id) . " <" . h(Configure::read('OrderMail.to')) . ">")
-                    ->viewBuilder()
-                    ->disableAutoLayout()
-                    ->setTemplate('enquiry');
-
-                // Send data to the email template
-                $mailer->setViewVars([
-                    'content' => 'The stock of Item : '.($itemm->name).' is too low'.'please replenish the stock in time.',
-                    'full_name' => 'Steve Ingram',
-                    'email' => Configure::read('OrderMail.to'),
-//                    'created' => $orderSend->created,
-                    'created' => time(),
-                    'id' => $itemm->id
-                ]);
-
-                //Send email
-                $email_result = $mailer->deliver();
-
-                if ($email_result) {
-//                    $orderSend->email_sent = ($email_result) ? true : false;
-                    $this->Flash->success(__('The order request has been saved and sent via email.'));
-                } else {
-                    $this->Flash->info(__('Email failed to send. Please check the enquiry in the system later. '));
-                }
-
-
-//        return $this->redirect(['action' => 'index']);
-    }
 
 
 }
