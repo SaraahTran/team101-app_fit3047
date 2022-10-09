@@ -154,7 +154,7 @@ endif;
                                             <div class="col-auto">
                                                 <?php $numDoing = 0;
                                                 $numDone = 0;
-                                                $numAll = 0;
+                                                $numAll = 1;
                                                 ?>
                                                 <?php foreach ($job as $jobb):
                                                     $numAll++?>
