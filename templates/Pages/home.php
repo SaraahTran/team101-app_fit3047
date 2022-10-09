@@ -154,7 +154,7 @@ endif;
                                             <div class="col-auto">
                                                 <?php $numDoing = 0;
                                                 $numDone = 0;
-                                                $numAll = 1;
+                                                $numAll = 0;
                                                 ?>
                                                 <?php foreach ($job as $jobb):
                                                     $numAll++?>
@@ -166,7 +166,13 @@ endif;
                                                     <?php endif; ?>
 
                                                 <?php endforeach; ?>
-                                                <?php $numP = (float)($numDone*100/$numAll) ?>
+                                                <?php if ($numAll == 0) : ?>
+                                                    <?php $numP = 0 ?>
+                                                <?php endif; ?>
+                                                <?php if ($numAll != 0) : ?>
+                                                    <?php $numP = (float)($numDone*100/$numAll) ?>
+                                                <?php endif; ?>
+
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= h($numP) ?>%</div>
 
                                             </div>
