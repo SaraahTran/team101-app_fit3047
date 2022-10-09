@@ -21,7 +21,7 @@
                     <th><?= h('job description') ?></th>
                     <th><?= h('Done?') ?></th>
                     <th><?= h('job price($)') ?></th>
-                    <th><?= h('job start time') ?></th>
+                    <th><?= h('job due date and time') ?></th>
                     <th><?= h('job duration') ?></th>
 
                     <th class="actions"><?= __('Actions') ?></th>
