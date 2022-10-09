@@ -199,7 +199,7 @@ class OrdersController extends AppController
 
                     // Send data to the email template
                     $mailer->setViewVars([
-                        'content' => 'Your invoice ID is: '.($invoices->id).'.'.'                                            '.'The total amount of your order is: '.($order->total).'$',
+                        'content' =>      'Your order has been accepted. The invoice ID of the order is: '.($invoices->id).'.'.'                                           '.'The total amount of your order is: '.($order->total).'$',
                         'full_name' => $custName,
                         'email' => $custEmail,
 //                    'created' => $orderSend->created,
