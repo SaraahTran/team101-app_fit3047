@@ -73,7 +73,7 @@ class InvoicesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+            $this->Flash->info(__('The invoice could not be saved. Please, try again.'));
         }
         $orders = $this->Invoices->Orders->find('list', ['limit' => 200])->all();
         $this->set(compact('invoice', 'orders'));
@@ -104,7 +104,7 @@ class InvoicesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+            $this->Flash->info(__('The invoice could not be saved. Please, try again.'));
         }
         $orders = $this->Invoices->Orders->find('list', ['limit' => 200])->all();
         $this->set(compact('invoice', 'orders'));
@@ -124,7 +124,7 @@ class InvoicesController extends AppController
         if ($this->Invoices->delete($invoice)) {
             $this->Flash->success(__('The invoice has been deleted.'));
         } else {
-            $this->Flash->error(__('The invoice could not be deleted. Please, try again.'));
+            $this->Flash->info(__('The invoice could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

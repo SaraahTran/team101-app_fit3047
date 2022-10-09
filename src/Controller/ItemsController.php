@@ -75,7 +75,7 @@ class ItemsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The item could not be saved. Please, try again.'));
+            $this->Flash->info(__('The item could not be saved. Please, try again.'));
         }
         $categories = $this->Items->Categories->find('list', ['limit' => 200])->all();
         $orders = $this->Items->Orders->find('list', ['limit' => 200])->all();
@@ -116,7 +116,7 @@ class ItemsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The item could not be saved. Please, try again.'));
+            $this->Flash->info(__('The item could not be saved. Please, try again.'));
         }
         $categories = $this->Items->Categories->find('list', ['limit' => 200])->all();
         $orders = $this->Items->Orders->find('list', ['limit' => 200])->all();
@@ -197,7 +197,7 @@ class ItemsController extends AppController
 //                    $orderSend->email_sent = ($email_result) ? true : false;
                     $this->Flash->success(__('The order request has been saved and sent via email.'));
                 } else {
-                    $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
+                    $this->Flash->info(__('Email failed to send. Please check the enquiry in the system later. '));
                 }
 
 

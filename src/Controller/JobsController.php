@@ -83,7 +83,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+            $this->Flash->info(__('The job could not be saved. Please, try again.'));
         }
 //        $tags = $this->Articles->Tags->find('list')->all();
         $this->set(compact('job'));
@@ -125,7 +125,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+            $this->Flash->info(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
 
@@ -148,7 +148,7 @@ class JobsController extends AppController
         if ($this->Jobs->delete($job)) {
             $this->Flash->success(__('The job has been deleted.'));
         } else {
-            $this->Flash->error(__('The job could not be deleted. Please, try again.'));
+            $this->Flash->info(__('The job could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -176,7 +176,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+            $this->Flash->info(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
     }
@@ -200,7 +200,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The job could not be saved. Please, try again.'));
+            $this->Flash->info(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
     }
