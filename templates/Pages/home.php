@@ -155,7 +155,6 @@ endif;
                                                 <?php $numDoing = 0;
                                                 $numDone = 0;
                                                 $numAll = 0;
-
                                                 ?>
                                                 <?php foreach ($job as $jobb):
                                                     $numAll++?>
