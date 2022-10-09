@@ -111,7 +111,7 @@ class OrdersController extends AppController
                         'full_name' => 'Steve Ingram',
                         'email' => Configure::read('OrderMail.to'),
 //                    'created' => $orderSend->created,
-                        'created' => time(),
+                        'created' => date('d-m-Y',time()),
                         'id' => $fetchedProduct->id
                     ]);
                     //Send email
