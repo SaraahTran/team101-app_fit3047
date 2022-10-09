@@ -54,7 +54,7 @@
                         <td style="color: red"><?= h('Alert: Low Stock') ?></td>
                         <?php endif; ?>
                     <?php if (($item->item_quantity)>($item->quantity_threshold)) : ?>
-                        <td><?= h('Adequate') ?></td>
+                        <td><?= h('Normal') ?></td>
                     <?php endif; ?>
 
                     <td class="actions">
