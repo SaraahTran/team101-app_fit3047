@@ -67,14 +67,25 @@ class JobsController extends AppController
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
 
             if($job->job_price<=0){
-                $this->Flash->info(__('The Job could not be create. Please, try again.'));
+                $this->Flash->error(__('The Job could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add']);
             }
             if($job->job_duration<=0){
-                $this->Flash->info(__('The Job could not be create. Please, try again.'));
+                $this->Flash->error(__('The Job could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add']);
 
             }
+            if($job->job_duration>=10000000){
+                $this->Flash->error(__('The Job could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add']);
+
+            }
+            if($job->job_price>=10000000){
+                $this->Flash->error(__('The order could not be create. This item is out of stock.'));
+
+                return $this->redirect(['action' => 'add', $job->id]);
+            }
+
             // Changed: Set the user_id from the current user.
 //            $job->user_id = $this->request->getAttribute('identity')->getIdentifier();
 
@@ -83,7 +94,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The job could not be saved. Please, try again.'));
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
 //        $tags = $this->Articles->Tags->find('list')->all();
         $this->set(compact('job'));
@@ -109,13 +120,23 @@ class JobsController extends AppController
             $job = $this->Jobs->patchEntity($job, $this->request->getData());
 
             if($job->job_price<=0){
-                $this->Flash->info(__('The Job could not be edit. Please, try again.'));
+                $this->Flash->error(__('The Job could not be edit. Please, try again.'));
                 return $this->redirect(['action' => 'edit', $job->id]);
             }
             if($job->job_duration<=0){
-                $this->Flash->info(__('The Job could not be edit. Please, try again.'));
+                $this->Flash->error(__('The Job could not be edit. Please, try again.'));
                 return $this->redirect(['action' => 'edit'], $job->id);
 
+            }
+            if($job->job_duration>=10000000){
+                $this->Flash->error(__('The Job could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'edit']);
+
+            }
+            if($job->job_price>=10000000){
+                $this->Flash->error(__('The order could not be create. This item is out of stock.'));
+
+                return $this->redirect(['action' => 'edit', $job->id]);
             }
 
 
@@ -125,7 +146,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The job could not be saved. Please, try again.'));
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
 
@@ -148,7 +169,7 @@ class JobsController extends AppController
         if ($this->Jobs->delete($job)) {
             $this->Flash->success(__('The job has been deleted.'));
         } else {
-            $this->Flash->info(__('The job could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The job could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -176,7 +197,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The job could not be saved. Please, try again.'));
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
     }
@@ -200,7 +221,7 @@ class JobsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The job could not be saved. Please, try again.'));
+            $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
         $this->set(compact('job'));
     }

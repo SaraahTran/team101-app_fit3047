@@ -54,7 +54,7 @@ class CustomersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The customer could not be saved. Please, try again.'));
+            $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('customer'));
     }
@@ -78,7 +78,7 @@ class CustomersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The customer could not be saved. Please, try again.'));
+            $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('customer'));
     }
@@ -97,7 +97,7 @@ class CustomersController extends AppController
         if ($this->Customers->delete($customer)) {
             $this->Flash->success(__('The customer has been deleted.'));
         } else {
-            $this->Flash->info(__('The customer could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The customer could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

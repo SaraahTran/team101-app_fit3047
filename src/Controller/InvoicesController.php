@@ -62,7 +62,12 @@ class InvoicesController extends AppController
 
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
             if($invoice->invoice_amount<=0){
-                $this->Flash->info(__('The Invoice could not be create. Please, try again.'));
+                $this->Flash->error(__('The Invoice could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $invoice->id]);
+            }
+            if($invoice->invoice_amount>=10000000){
+                $this->Flash->error(__('The Invoice could not be create. Please, try again.'));
+
                 return $this->redirect(['action' => 'add', $invoice->id]);
             }
 
@@ -73,7 +78,7 @@ class InvoicesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The invoice could not be saved. Please, try again.'));
+            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
         }
         $orders = $this->Invoices->Orders->find('list', ['limit' => 200])->all();
         $this->set(compact('invoice', 'orders'));
@@ -95,7 +100,12 @@ class InvoicesController extends AppController
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
 
             if($invoice->invoice_amount<=0){
-                $this->Flash->info(__('The Invoice could not be create. Please, try again.'));
+                $this->Flash->info(__('The Invoice could not be edit. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $invoice->id]);
+            }
+            if($invoice->invoice_amount>=10000000){
+                $this->Flash->error(__('The Invoice could not be edit. Please, try again.'));
+
                 return $this->redirect(['action' => 'edit', $invoice->id]);
             }
 

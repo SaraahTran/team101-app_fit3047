@@ -63,6 +63,7 @@ class JobsTable extends Table
 
         $validator
             ->numeric('job_price')
+            ->maxLength('job_price', 15)
             ->requirePresence('job_price', 'create')
             ->notEmptyString('job_price');
 
@@ -73,6 +74,7 @@ class JobsTable extends Table
 
         $validator
             ->integer('job_duration')
+            ->maxLength('job_duration', 11)
             ->requirePresence('job_duration', 'create')
             ->notEmptyString('job_duration');
 

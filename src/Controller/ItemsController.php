@@ -59,23 +59,37 @@ class ItemsController extends AppController
 
             $item = $this->Items->patchEntity($item, $this->request->getData());
             if($item->quantity_threshold<=0){
-                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add'], $item->id);
             }
             if($item->item_quantity<=0){
-                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add'], $item->id);
             }
             if($item->item_price<=0){
-                $this->Flash->info(__('The item could not be create. Please, try again.'));
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add'], $item->id);
             }
+            if($item->item_price>=100000000){
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $item->id]);
+            }
+            if($item->quantity_threshold>=1000000000){
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $item->id]);
+            }
+            if($item->item_quantity>=1000000000){
+                $this->Flash->error(__('The item could not be create. Please, try again.'));
+                return $this->redirect(['action' => 'add', $item->id]);
+            }
+
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The item could not be saved. Please, try again.'));
+
+            $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
         $categories = $this->Items->Categories->find('list', ['limit' => 200])->all();
         $orders = $this->Items->Orders->find('list', ['limit' => 200])->all();
@@ -98,18 +112,29 @@ class ItemsController extends AppController
             $item = $this->Items->patchEntity($item, $this->request->getData());
 
             if($item->quantity_threshold<=0){
-                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
                 return $this->redirect(['action' => 'edit', $item->id]);
             }
             if($item->item_quantity<=0){
-                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
                 return $this->redirect(['action' => 'edit', $item->id]);
             }
             if($item->item_price<=0){
-                $this->Flash->info(__('The item could not be save. Please, try again.'));
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
                 return $this->redirect(['action' => 'edit', $item->id]);
             }
-
+            if($item->item_price>=100000000){
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'edit', $item->id]);
+            }
+            if($item->quantity_threshold>=1000000000){
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'add', $item->id]);
+            }
+            if($item->item_quantity>=1000000000){
+                $this->Flash->error(__('The item could not be save. Please, try again.'));
+                return $this->redirect(['action' => 'add', $item->id]);
+            }
 
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));

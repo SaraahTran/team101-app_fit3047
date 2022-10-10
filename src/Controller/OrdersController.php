@@ -82,12 +82,12 @@ class OrdersController extends AppController
                 $itemQ = (int) $p['_joinData']['line_quantity'];
                 $itemTh = (int)$fetchedProduct->quantity_threshold;
                 if($currentS-$itemQ<=0){
-                    $this->Flash->info(__('The order could not be create. This item is out of stock.'));
+                    $this->Flash->error(__('The order could not be create. This item is out of stock.'));
 
                     return $this->redirect(['action' => 'add', $order->id]);
                 }
                 if($currentS<=$itemTh){
-                    $this->Flash->info(__('The order could not be create. Please, try again.'));
+                    $this->Flash->error(__('The order could not be create. Please, try again.'));
 
                     return $this->redirect(['action' => 'add', $order->id]);
                 }
@@ -126,11 +126,11 @@ class OrdersController extends AppController
                     //send email
                 }
                 if($itemQ == null){
-                    $this->Flash->info(__('Invalid input, please enter the quantity of the item.'));
+                    $this->Flash->error(__('Invalid input, please enter the quantity of the item.'));
                     return $this->redirect(['action' => 'add', $order->id]);
                 }
                 if($itemQ <= 0){
-                    $this->Flash->info(__('Invalid input, the number of items cannot be less than 0.'));
+                    $this->Flash->error(__('Invalid input, the number of items cannot be less than 0.'));
                     return $this->redirect(['action' => 'add', $order->id]);
                 }
 
@@ -214,7 +214,7 @@ class OrdersController extends AppController
 //                    $orderSend->email_sent = ($email_result) ? true : false;
                         $this->Flash->success(__('The order request has been saved and sent via email.'));
                     } else {
-                        $this->Flash->info(__('Email failed to send. Please check the enquiry in the system later. '));
+                        $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
                     }
 
 //send email
@@ -223,7 +223,7 @@ class OrdersController extends AppController
                 $this->Flash->success(__('The order has been saved.'));
 
                 return $this->redirect(['action' => 'index']);}
-            $this->Flash->info(__('The order could not be saved. Please, try again.'));
+            $this->Flash->error(__('The order could not be saved. Please, try again.'));
         }
         $customers = $this->Orders->Customers->find('list', ['limit' => 200])->all();
         $items = $this->Orders->Items->find('list', ['limit' => 200])->all();
@@ -248,7 +248,7 @@ class OrdersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if($order->total<=0){
-                $this->Flash->info(__('The order could not be save. Please, try again.'));
+                $this->Flash->error(__('The order could not be save. Please, try again.'));
 
                 return $this->redirect(['action' => 'edit', $order->id]);
             }
@@ -261,7 +261,7 @@ class OrdersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->info(__('The order could not be saved. Please, try again.'));
+            $this->Flash->error(__('The order could not be saved. Please, try again.'));
         }
         $customers = $this->Orders->Customers->find('list', ['limit' => 200])->all();
         $items = $this->Orders->Items->find('list', ['limit' => 200])->all();
@@ -282,7 +282,7 @@ class OrdersController extends AppController
         if ($this->Orders->delete($order)) {
             $this->Flash->success(__('The order has been deleted.'));
         } else {
-            $this->Flash->info(__('The order could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The order could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
