@@ -103,7 +103,7 @@ class InvoicesController extends AppController
                 $this->Flash->info(__('The Invoice could not be edit. Please, try again.'));
                 return $this->redirect(['action' => 'edit', $invoice->id]);
             }
-            if($invoice->invoice_amount>=10000000){
+            if($invoice->invoice_amount>=1000000000){
                 $this->Flash->error(__('The Invoice could not be edit. Please, try again.'));
 
                 return $this->redirect(['action' => 'edit', $invoice->id]);

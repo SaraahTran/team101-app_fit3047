@@ -58,7 +58,7 @@ class QuotesController extends AppController
                 $this->Flash->error(__('The Quote could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add', $quote->id]);
             }
-            if($quote->quote_amount>=10000000){
+            if($quote->quote_amount>=1000000000){
                 $this->Flash->error(__('The Quote could not be create. Please, try again.'));
 
                 return $this->redirect(['action' => 'add', $quote->id]);

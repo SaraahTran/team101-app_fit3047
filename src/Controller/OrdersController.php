@@ -252,7 +252,11 @@ class OrdersController extends AppController
 
                 return $this->redirect(['action' => 'edit', $order->id]);
             }
+            if($order->total>=1000000000){
+                $this->Flash->error(__('The order could not be save. Please, try again.'));
 
+                return $this->redirect(['action' => 'edit', $order->id]);
+            }
 
 
 

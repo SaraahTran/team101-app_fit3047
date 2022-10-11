@@ -70,7 +70,7 @@ class ItemsController extends AppController
                 $this->Flash->error(__('The item could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add'], $item->id);
             }
-            if($item->item_price>=100000000){
+            if($item->item_price>=1000000000){
                 $this->Flash->error(__('The item could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add', $item->id]);
             }

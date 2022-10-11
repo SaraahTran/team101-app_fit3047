@@ -75,15 +75,15 @@ class JobsController extends AppController
                 return $this->redirect(['action' => 'add']);
 
             }
-            if($job->job_duration>=10000000){
+            if($job->job_duration>=100000){
                 $this->Flash->error(__('The Job could not be create. Please, try again.'));
                 return $this->redirect(['action' => 'add']);
 
             }
-            if($job->job_price>=10000000){
+            if($job->job_price>=1000000000){
                 $this->Flash->error(__('The order could not be create. This item is out of stock.'));
 
-                return $this->redirect(['action' => 'add', $job->id]);
+                return $this->redirect(['action' => 'add']);
             }
 
             // Changed: Set the user_id from the current user.
@@ -128,12 +128,12 @@ class JobsController extends AppController
                 return $this->redirect(['action' => 'edit'], $job->id);
 
             }
-            if($job->job_duration>=10000000){
+            if($job->job_duration>=10000){
                 $this->Flash->error(__('The Job could not be create. Please, try again.'));
-                return $this->redirect(['action' => 'edit']);
+                return $this->redirect(['action' => 'edit', $job->id]);
 
             }
-            if($job->job_price>=10000000){
+            if($job->job_price>=100000001){
                 $this->Flash->error(__('The order could not be create. This item is out of stock.'));
 
                 return $this->redirect(['action' => 'edit', $job->id]);
