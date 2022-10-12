@@ -59,6 +59,7 @@ class UsersTable extends Table
         $validator
             ->scalar('password')
             ->maxLength('password', 200)
+//            ->minLength('password', 8)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
@@ -67,8 +68,13 @@ class UsersTable extends Table
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
+        $validator->add('email', 'valid-email', ['rule' => 'email']);
+
+
         return $validator;
     }
+
+
 
     /**
      * Returns a rules checker object that will be used for validating

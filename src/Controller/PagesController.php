@@ -54,6 +54,7 @@ class PagesController extends AppController
         $cust = $this->fetchTable('Customers')->find()->toArray();
         $items = $this->fetchTable('Items')->find()->toArray();
         $orderS = $this->fetchTable('Orders')->find()->toArray();
+        $user = $this->fetchTable('Users')->find()->toArray();
         if (!$path) {
             return $this->redirect('/');
         }
@@ -68,7 +69,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page','job','cust','items','orderS', 'subpage'));
+        $this->set(compact('page','job','cust','items','orderS','user', 'subpage'));
 
         try {
             return $this->render(implode('/', $path));
